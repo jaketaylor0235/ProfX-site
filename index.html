@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="icon" href="favicon.ico">
+<head>
+  <link rel="icon" href="favicon.ico">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="icon.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ProfX | Turn missed quotes into profit</title>
@@ -184,11 +187,12 @@
       border-bottom:1px solid var(--border);
       background:#fbfcfc;
     }
-    .feature-grid,.steps-grid,.faq-list,.benefit-grid,.contact-grid{
+    .feature-grid,.steps-grid,.faq-list,.benefit-grid,.contact-grid,.cadence-grid{
       display:grid;
       gap:18px;
     }
     .feature-grid{grid-template-columns:repeat(3,1fr)}
+    .cadence-grid{grid-template-columns:repeat(3,1fr);margin-top:34px}
     .card{
       background:white;
       border:1px solid var(--border);
@@ -305,7 +309,7 @@
       flex-wrap:wrap;
     }
     @media (max-width: 980px){
-      .hero-grid,.dashboard-grid,.dark-grid,.contact-grid,.feature-grid,.steps-grid,.benefit-grid,.stats,.form-grid{
+      .hero-grid,.dashboard-grid,.dark-grid,.contact-grid,.feature-grid,.steps-grid,.benefit-grid,.stats,.form-grid,.cadence-grid{
         grid-template-columns:1fr;
       }
       h1{font-size:42px}
@@ -322,6 +326,7 @@
       <img src="logo.png" alt="ProfX" style="height:52px;width:auto" />
       <div class="nav-links">
         <a href="#how">How it works</a>
+        <a href="#cadences">Text cadences</a>
         <a href="#analytics">Analytics</a>
         <a href="#faq">FAQ</a>
         <a class="btn btn-dark" href="https://calendly.com/jake-getprofx/30min" target="_blank">Start Closing More Jobs</a>
@@ -448,6 +453,29 @@
     </div>
   </section>
 
+  <section id="cadences" class="section-light">
+    <div class="container">
+      <div class="eyebrow">Text cadencing</div>
+      <h2>Automatic follow-up that keeps quotes from going cold.</h2>
+      <p class="lead">Most missed jobs are not lost because the homeowner said no. They are lost because the estimate was sent, life got busy, and nobody followed up at the right time. ProfX keeps the conversation moving automatically.</p>
+
+      <div class="cadence-grid">
+        <div class="card">
+          <h3>Follow up after the quote is sent</h3>
+          <p>ProfX can remind homeowners after an estimate goes out, check in when they have not responded, and help your team stay top-of-mind without manually chasing every quote.</p>
+        </div>
+        <div class="card">
+          <h3>Use the right tone for the situation</h3>
+          <p>Choose professional, friendly, or urgent follow-up styles depending on the quote. This helps your message feel human while still keeping the process consistent.</p>
+        </div>
+        <div class="card">
+          <h3>Close more leads and quotes</h3>
+          <p>Automated cadences help bring old quotes back into focus, surface follow-up due opportunities, and give reps a clearer path to turn open estimates into won jobs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="dark-band">
     <div class="container dark-grid">
       <div>
@@ -479,6 +507,14 @@
         <details>
           <summary>Is ProfX a CRM?</summary>
           <p>No. ProfX is a revenue capture and analytics layer built for home service businesses. It helps you recover jobs, automate follow-up, and understand why quotes are not converting.</p>
+        </details>
+        <details>
+          <summary>How do the text cadences work?</summary>
+          <p>ProfX can start follow-up sequences after quotes are sent, remind homeowners when they have not responded, and help your team bring open estimates back into active conversation.</p>
+        </details>
+        <details>
+          <summary>Can automated follow-up help close more quotes?</summary>
+          <p>Yes. ProfX helps close more quotes by making sure follow-up happens consistently, at the right time, with messaging that keeps the homeowner engaged instead of letting the opportunity go cold.</p>
         </details>
         <details>
           <summary>Who is this built for first?</summary>
