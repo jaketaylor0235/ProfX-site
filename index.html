@@ -1,596 +1,2025 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="favicon.ico">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="icon.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ProfX | Turn missed quotes into profit</title>
-  <meta name="description" content="ProfX helps home service businesses automatically follow up on quotes, recover lost revenue, and understand what services customers are turning down and why." />
+
+  <link rel="icon" href="favicon.ico" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="logo.png" />
+
+  <title>ProfX | All-in-One CRM & Operations Platform for Home Services</title>
+
+  <meta
+    name="description"
+    content="ProfX is an all-in-one CRM and operations platform for home service companies, combining sales, quoting, automated text follow-up, scheduling, dispatch, field operations, invoicing, analytics, customer communication, and AI opportunity monitoring."
+  />
+
   <style>
     :root{
-      --bg:#f6f7f8;
-      --card:#ffffff;
+      --bg:#f5f7fb;
+      --white:#ffffff;
+      --navy:#020817;
+      --navy2:#0b1324;
+      --navy3:#111b31;
       --text:#0f172a;
-      --muted:#475569;
+      --muted:#64748b;
       --border:#e2e8f0;
-      --green:#3fa34d;
-      --green-dark:#146c43;
-      --navy:#0b1730;
+      --blue:#2563eb;
+      --green:#059669;
+      --amber:#d97706;
+      --red:#dc2626;
+      --purple:#7c3aed;
+      --shadow:0 24px 70px rgba(15,23,42,.12);
+      --max:1180px;
     }
+
     *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
     body{
       margin:0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       background:var(--bg);
       color:var(--text);
       line-height:1.5;
     }
+
     a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+
     .container{
-      max-width:1180px;
+      width:min(var(--max),calc(100% - 40px));
       margin:0 auto;
-      padding:0 24px;
     }
-    .nav{
+
+    .topbar{
       position:sticky;
       top:0;
       z-index:50;
-      background:rgba(246,247,248,.92);
-      backdrop-filter: blur(8px);
-      border-bottom:1px solid var(--border);
+      background:rgba(255,255,255,.94);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(226,232,240,.9);
     }
-    .nav-inner{
+
+    .nav{
+      min-height:78px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      padding:18px 0;
+      gap:24px;
     }
-    .nav-links{
+
+    .brand{
       display:flex;
       align-items:center;
-      gap:28px;
-      font-size:14px;
-      color:var(--muted);
+      gap:12px;
     }
+
+    .brand img{
+      height:46px;
+      width:auto;
+      border-radius:12px;
+    }
+
+    .brand strong{
+      display:block;
+      font-size:20px;
+      letter-spacing:-.03em;
+    }
+
+    .brand span{
+      display:block;
+      margin-top:4px;
+      color:#94a3b8;
+      text-transform:uppercase;
+      font-size:9px;
+      font-weight:900;
+      letter-spacing:.18em;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:28px;
+      color:#475569;
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .nav-links a:hover{color:#0f172a}
+
+    .nav-actions{
+      display:flex;
+      gap:10px;
+    }
+
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
+      min-height:46px;
+      padding:0 20px;
       border-radius:14px;
-      padding:14px 22px;
-      font-weight:700;
+      font-size:14px;
+      font-weight:900;
+      border:1px solid transparent;
       transition:.2s ease;
     }
-    .btn-primary{
-      background:var(--green);
-      color:white;
-    }
-    .btn-primary:hover{background:#2e8b3d}
+
+    .btn:hover{transform:translateY(-1px)}
+
     .btn-dark{
       background:var(--navy);
       color:white;
     }
+
+    .btn-primary{
+      background:var(--blue);
+      color:white;
+      box-shadow:0 10px 30px rgba(37,99,235,.22);
+    }
+
     .btn-outline{
-      border:1px solid #cbd5e1;
-      color:var(--text);
       background:white;
+      color:var(--text);
+      border-color:var(--border);
     }
+
     .hero{
-      padding:72px 0 42px;
+      padding:76px 0 60px;
+      overflow:hidden;
+      position:relative;
     }
+
+    .hero:before{
+      content:"";
+      position:absolute;
+      width:760px;
+      height:760px;
+      right:-180px;
+      top:-420px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(37,99,235,.14),transparent 68%);
+      pointer-events:none;
+    }
+
     .hero-grid{
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:48px;
+      grid-template-columns:1fr 1fr;
+      gap:58px;
       align-items:center;
     }
-    .badge{
-      display:inline-block;
-      padding:10px 14px;
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      border:1px solid #bfdbfe;
+      background:#eff6ff;
+      color:#1d4ed8;
+      padding:8px 13px;
       border-radius:999px;
-      background:#eaf7ee;
-      color:var(--green-dark);
-      border:1px solid #c8ead1;
-      font-size:14px;
-      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+      font-size:11px;
+      font-weight:900;
     }
+
+    .eyebrow-dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#22c55e;
+      box-shadow:0 0 0 5px rgba(34,197,94,.12);
+    }
+
     h1{
-      font-size:58px;
-      line-height:1.02;
-      margin:18px 0 18px;
-      letter-spacing:-1.5px;
+      margin:20px 0 18px;
+      font-size:clamp(50px,6vw,78px);
+      line-height:.96;
+      letter-spacing:-.06em;
     }
-    .sub{
-      font-size:20px;
-      color:var(--muted);
-      max-width:700px;
+
+    .hero-copy{
+      max-width:660px;
+      color:#475569;
+      font-size:19px;
+      line-height:1.72;
     }
+
+    .hero-copy strong{color:#0f172a}
+
     .hero-actions{
       display:flex;
-      gap:16px;
-      margin-top:28px;
       flex-wrap:wrap;
+      gap:12px;
+      margin-top:30px;
     }
-    .panel{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:28px;
-      padding:16px;
-      box-shadow:0 20px 60px rgba(15,23,42,.08);
+
+    .hero-note{
+      margin-top:17px;
+      color:#64748b;
+      font-size:13px;
+      font-weight:700;
     }
-    .dashboard{
-      background:var(--navy);
-      color:white;
-      border-radius:22px;
-      padding:22px;
-    }
-    .dashboard h3{margin:6px 0 0;font-size:28px}
-    .stats{
+
+    .results{
       display:grid;
       grid-template-columns:repeat(3,1fr);
       gap:12px;
-      margin-top:22px;
+      margin-top:32px;
     }
-    .stat{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:18px;
-      padding:16px;
+
+    .result{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:17px;
+      padding:15px;
     }
-    .stat p{margin:0;color:#cbd5e1;font-size:13px}
-    .stat strong{display:block;margin-top:8px;font-size:28px}
-    .dashboard-grid{
+
+    .result strong{
+      display:block;
+      font-size:18px;
+      letter-spacing:-.03em;
+    }
+
+    .result span{
+      display:block;
+      margin-top:3px;
+      color:#64748b;
+      font-size:11px;
+      font-weight:700;
+    }
+
+    .app-window{
+      border:1px solid #1e293b;
+      background:#020817;
+      border-radius:30px;
+      padding:12px;
+      box-shadow:0 40px 100px rgba(2,8,23,.27);
+    }
+
+    .app-inner{
+      border-radius:22px;
+      overflow:hidden;
+      background:#f8fafc;
       display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:14px;
+      grid-template-columns:138px 1fr;
+      min-height:585px;
+    }
+
+    .sidebar{
+      background:#020817;
+      color:white;
+      padding:19px 13px;
+    }
+
+    .mini-brand{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      font-size:13px;
+      font-weight:900;
+      margin-bottom:22px;
+    }
+
+    .mark{
+      width:30px;
+      height:30px;
+      border-radius:9px;
+      background:linear-gradient(135deg,#2563eb,#16a34a);
+      display:grid;
+      place-items:center;
+      font-size:10px;
+    }
+
+    .side-label{
+      margin:16px 7px 6px;
+      color:#64748b;
+      text-transform:uppercase;
+      font-size:7px;
+      font-weight:900;
+      letter-spacing:.18em;
+    }
+
+    .side-item{
+      padding:8px 9px;
+      border-radius:8px;
+      color:#cbd5e1;
+      font-size:8px;
+      font-weight:800;
+      margin-bottom:2px;
+    }
+
+    .side-item.active{
+      background:#111b31;
+      color:white;
+    }
+
+    .app-content{
+      padding:22px;
+    }
+
+    .mock-header{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:start;
+    }
+
+    .mock-header p{
+      margin:0 0 4px;
+      color:#64748b;
+      text-transform:uppercase;
+      font-size:8px;
+      font-weight:900;
+      letter-spacing:.17em;
+    }
+
+    .mock-header h3{
+      margin:0;
+      font-size:23px;
+      letter-spacing:-.04em;
+    }
+
+    .health{
+      padding:7px 10px;
+      border:1px solid #a7f3d0;
+      background:#ecfdf5;
+      color:#047857;
+      border-radius:999px;
+      font-size:7px;
+      font-weight:900;
+    }
+
+    .metric-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:9px;
       margin-top:16px;
     }
-    .dashboard-card{
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:18px;
-      padding:18px;
+
+    .metric{
+      border:1px solid #e2e8f0;
+      border-radius:13px;
+      background:#fff;
+      padding:12px;
     }
-    .bar-row{margin-top:14px}
-    .bar-head{
-      display:flex;
-      justify-content:space-between;
-      font-size:13px;
-      color:#dbe4f0;
-      margin-bottom:7px;
-    }
-    .bar-bg{
-      height:10px;
-      border-radius:999px;
-      background:rgba(255,255,255,.1);
-      overflow:hidden;
-    }
-    .bar-fill{
-      height:100%;
-      background:linear-gradient(90deg,#6ad07e,#238b45);
-      border-radius:999px;
-    }
-    .reason{
-      display:flex;
-      justify-content:space-between;
-      padding:11px 14px;
-      border-radius:14px;
-      background:rgba(255,255,255,.05);
-      margin-top:10px;
-      font-size:14px;
-    }
-    .section-light{
-      padding:56px 0;
-      border-top:1px solid var(--border);
-      border-bottom:1px solid var(--border);
-      background:#fbfcfc;
-    }
-    .feature-grid,.steps-grid,.faq-list,.benefit-grid,.contact-grid,.cadence-grid{
-      display:grid;
-      gap:18px;
-    }
-    .feature-grid{grid-template-columns:repeat(3,1fr)}
-    .cadence-grid{grid-template-columns:repeat(3,1fr);margin-top:34px}
-    .card{
-      background:white;
-      border:1px solid var(--border);
-      border-radius:24px;
-      padding:24px;
-      box-shadow:0 8px 25px rgba(15,23,42,.04);
-    }
-    .card h3{margin-top:0}
-    .section{
-      padding:80px 0;
-    }
-    .eyebrow{
-      color:var(--green-dark);
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-size:12px;
-      font-weight:800;
-    }
-    h2{
-      font-size:40px;
-      margin:10px 0 12px;
-      letter-spacing:-1px;
-    }
-    .lead{
-      font-size:19px;
-      color:var(--muted);
-      max-width:760px;
-    }
-    .steps-grid{grid-template-columns:repeat(3,1fr);margin-top:34px}
-    .step-badge{
-      width:44px;height:44px;border-radius:14px;
-      display:flex;align-items:center;justify-content:center;
-      background:var(--navy);color:#fff;font-weight:800;
-    }
-    .dark-band{
-      background:var(--navy);
-      color:white;
-      padding:82px 0;
-    }
-    .dark-grid{
-      display:grid;
-      grid-template-columns:.95fr 1.05fr;
-      gap:28px;
-      align-items:start;
-    }
-    .benefit-grid{grid-template-columns:repeat(2,1fr)}
-    .benefit{
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.05);
-      border-radius:18px;
-      padding:18px;
-      color:#d8e1ec;
-    }
-    details{
-      background:white;
-      border:1px solid var(--border);
-      border-radius:18px;
-      padding:18px 20px;
-    }
-    summary{
-      cursor:pointer;
-      font-weight:700;
-      font-size:18px;
-    }
-    details p{
-      color:var(--muted);
-      margin:12px 0 0;
-    }
-    .faq-list{margin-top:28px}
-    .contact-grid{
-      grid-template-columns:.9fr 1.1fr;
-      align-items:start;
-      margin-top:22px;
-    }
-    form{
-      background:white;
-      border:1px solid var(--border);
-      border-radius:26px;
-      padding:24px;
-      box-shadow:0 10px 30px rgba(15,23,42,.06);
-    }
-    .form-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:14px;
-    }
-    input, textarea{
-      width:100%;
-      border:1px solid #cbd5e1;
-      border-radius:14px;
-      padding:14px 15px;
-      font:inherit;
-      background:white;
-    }
-    textarea{min-height:130px;resize:vertical}
-    label{
-      display:block;
-      font-size:14px;
-      font-weight:600;
-      color:#334155;
-      margin-bottom:12px;
-    }
-    .footer{
-      border-top:1px solid var(--border);
-      padding:28px 0 40px;
+
+    .metric span{
       color:#64748b;
-      font-size:14px;
+      font-size:7px;
+      font-weight:900;
+      text-transform:uppercase;
     }
-    .footer-inner{
+
+    .metric strong{
+      display:block;
+      margin-top:4px;
+      font-size:17px;
+    }
+
+    .panel{
+      background:#fff;
+      border:1px solid #e2e8f0;
+      border-radius:16px;
+      padding:13px;
+      margin-top:11px;
+    }
+
+    .panel-head{
       display:flex;
       align-items:center;
       justify-content:space-between;
+      margin-bottom:10px;
+    }
+
+    .panel-head strong{font-size:10px}
+
+    .panel-head span{
+      color:#2563eb;
+      font-size:7px;
+      font-weight:900;
+    }
+
+    .risk-list{
+      display:grid;
+      gap:7px;
+    }
+
+    .risk{
+      display:grid;
+      grid-template-columns:1fr auto;
+      align-items:center;
+      gap:10px;
+      border:1px solid #e2e8f0;
+      border-radius:10px;
+      padding:9px;
+    }
+
+    .risk strong{
+      display:block;
+      font-size:8px;
+    }
+
+    .risk small{
+      display:block;
+      margin-top:2px;
+      color:#64748b;
+      font-size:7px;
+    }
+
+    .risk-badge{
+      border-radius:999px;
+      padding:4px 6px;
+      font-size:6px;
+      font-weight:900;
+      text-transform:uppercase;
+    }
+
+    .risk-high{background:#fef2f2;color:#b91c1c}
+    .risk-med{background:#fffbeb;color:#92400e}
+
+    .bottom-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+      margin-top:11px;
+    }
+
+    .cadence-step{
+      display:flex;
+      gap:8px;
+      align-items:flex-start;
+      padding:7px 0;
+      border-bottom:1px solid #f1f5f9;
+    }
+
+    .cadence-step:last-child{border-bottom:0}
+
+    .cadence-dot{
+      width:20px;
+      height:20px;
+      border-radius:7px;
+      flex:0 0 20px;
+      display:grid;
+      place-items:center;
+      background:#dbeafe;
+      color:#1d4ed8;
+      font-size:7px;
+      font-weight:900;
+    }
+
+    .cadence-step strong{
+      display:block;
+      font-size:7px;
+    }
+
+    .cadence-step span{
+      display:block;
+      color:#64748b;
+      font-size:6px;
+      margin-top:1px;
+    }
+
+    .loss-bar{
+      margin:8px 0;
+    }
+
+    .loss-label{
+      display:flex;
+      justify-content:space-between;
+      font-size:7px;
+      font-weight:800;
+      margin-bottom:3px;
+    }
+
+    .bar{
+      height:7px;
+      border-radius:999px;
+      background:#f1f5f9;
+      overflow:hidden;
+    }
+
+    .bar > div{
+      height:100%;
+      border-radius:999px;
+      background:#2563eb;
+    }
+
+    .section{
+      padding:88px 0;
+    }
+
+    .dark{
+      background:#020817;
+      color:#fff;
+    }
+
+    .section-head{
+      max-width:760px;
+      margin-bottom:40px;
+    }
+
+    .section-head.center{
+      text-align:center;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .kicker{
+      color:#2563eb;
+      font-size:11px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+    }
+
+    .dark .kicker{color:#60a5fa}
+
+    h2{
+      margin:9px 0 14px;
+      font-size:clamp(35px,4.5vw,53px);
+      line-height:1.03;
+      letter-spacing:-.05em;
+    }
+
+    .section-head p{
+      margin:0;
+      color:#64748b;
+      font-size:17px;
+      line-height:1.72;
+    }
+
+    .dark .section-head p{color:#94a3b8}
+
+    .revenue-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:17px;
+    }
+
+    .revenue-card{
+      border:1px solid var(--border);
+      background:white;
+      border-radius:24px;
+      padding:26px;
+      box-shadow:0 12px 35px rgba(15,23,42,.07);
+    }
+
+    .icon{
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:#eff6ff;
+      font-size:19px;
+      margin-bottom:18px;
+    }
+
+    .revenue-card h3{
+      margin:0;
+      font-size:20px;
+      letter-spacing:-.03em;
+    }
+
+    .revenue-card p{
+      color:#64748b;
+      font-size:14px;
+      line-height:1.7;
+      margin:9px 0 0;
+    }
+
+    .cadence-flow{
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:8px;
+      align-items:center;
+      margin-top:38px;
+    }
+
+    .flow-step{
+      position:relative;
+      text-align:center;
+      border:1px solid #1e293b;
+      background:#0b1324;
+      border-radius:17px;
+      padding:20px 8px;
+    }
+
+    .flow-step:not(:last-child):after{
+      content:"→";
+      position:absolute;
+      right:-11px;
+      top:50%;
+      color:#475569;
+      transform:translateY(-50%);
+      font-weight:900;
+    }
+
+    .flow-step strong{
+      display:block;
+      font-size:11px;
+    }
+
+    .flow-step span{
+      display:block;
+      color:#64748b;
+      font-size:8px;
+      margin-top:4px;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:46px;
+      align-items:center;
+    }
+
+    .check-list{
+      list-style:none;
+      padding:0;
+      margin:24px 0 0;
+    }
+
+    .check-list li{
+      display:flex;
+      gap:11px;
+      margin:13px 0;
+      color:#475569;
+      font-size:15px;
+      font-weight:650;
+    }
+
+    .check{
+      width:22px;
+      height:22px;
+      flex:0 0 22px;
+      border-radius:999px;
+      display:grid;
+      place-items:center;
+      background:#dcfce7;
+      color:#047857;
+      font-size:11px;
+      font-weight:900;
+    }
+
+    .visual-card{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:25px;
+      box-shadow:var(--shadow);
+    }
+
+    .insight{
+      padding:14px;
+      border-radius:15px;
+      border:1px solid #e2e8f0;
+      margin-bottom:10px;
+    }
+
+    .insight:last-child{margin-bottom:0}
+
+    .insight-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+    }
+
+    .insight strong{
+      font-size:14px;
+    }
+
+    .insight p{
+      margin:5px 0 0;
+      color:#64748b;
+      font-size:12px;
+    }
+
+    .flag{
+      padding:5px 8px;
+      border-radius:999px;
+      font-size:8px;
+      font-weight:900;
+      text-transform:uppercase;
+    }
+
+    .flag-red{background:#fef2f2;color:#b91c1c}
+    .flag-blue{background:#eff6ff;color:#1d4ed8}
+    .flag-amber{background:#fffbeb;color:#92400e}
+
+    .platform-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+
+    .platform-card{
+      border:1px solid #1e293b;
+      background:#0b1324;
+      border-radius:20px;
+      padding:20px;
+    }
+
+    .platform-card h3{
+      margin:0;
+      font-size:15px;
+    }
+
+    .platform-card p{
+      color:#94a3b8;
+      font-size:12px;
+      line-height:1.6;
+      margin:8px 0 0;
+    }
+
+    .pricing{
+      background:#fff;
+    }
+
+    .pricing-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:16px;
+      align-items:stretch;
+    }
+
+    .price-card{
+      position:relative;
+      border:1px solid var(--border);
+      border-radius:27px;
+      padding:27px;
+      background:#fff;
+      box-shadow:0 12px 35px rgba(15,23,42,.07);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .price-card.popular{
+      border:2px solid #2563eb;
+      transform:translateY(-8px);
+      box-shadow:0 26px 60px rgba(37,99,235,.17);
+    }
+
+    .popular-badge{
+      position:absolute;
+      top:-14px;
+      left:50%;
+      transform:translateX(-50%);
+      padding:7px 13px;
+      border-radius:999px;
+      background:#2563eb;
+      color:#fff;
+      font-size:9px;
+      font-weight:900;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .plan-name{
+      color:#475569;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:12px;
+      font-weight:900;
+    }
+
+    .price{
+      display:flex;
+      align-items:flex-end;
+      gap:5px;
+      margin-top:12px;
+    }
+
+    .price strong{
+      font-size:45px;
+      line-height:1;
+      letter-spacing:-.055em;
+    }
+
+    .price span{
+      color:#64748b;
+      font-size:12px;
+      font-weight:700;
+      padding-bottom:5px;
+    }
+
+    .plan-desc{
+      color:#64748b;
+      font-size:13px;
+      line-height:1.6;
+      min-height:82px;
+      margin:13px 0;
+    }
+
+    .limits{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:7px;
+      margin-bottom:13px;
+    }
+
+    .limit{
+      background:#f8fafc;
+      border:1px solid #e2e8f0;
+      border-radius:13px;
+      padding:10px;
+    }
+
+    .limit strong{
+      display:block;
+      font-size:13px;
+    }
+
+    .limit span{
+      display:block;
+      margin-top:2px;
+      color:#64748b;
+      font-size:8px;
+      font-weight:900;
+      text-transform:uppercase;
+    }
+
+    .plan-features{
+      list-style:none;
+      padding:0;
+      margin:10px 0 24px;
+      flex:1;
+    }
+
+    .plan-features li{
+      display:flex;
+      gap:8px;
+      color:#475569;
+      font-size:12px;
+      margin:9px 0;
+    }
+
+    .plan-features li:before{
+      content:"✓";
+      color:#059669;
+      font-weight:900;
+    }
+
+    .pricing-note{
+      margin-top:28px;
+      padding:18px;
+      border-radius:19px;
+      background:#eff6ff;
+      border:1px solid #dbeafe;
+      color:#1e40af;
+      text-align:center;
+      font-size:13px;
+      font-weight:800;
+    }
+
+    .website-service{
+      margin-top:34px;
+      padding:28px;
+      border-radius:24px;
+      border:1px solid #e2e8f0;
+      background:#f8fafc;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:28px;
+      flex-wrap:wrap;
+    }
+
+    .website-service h3{
+      margin:7px 0;
+      font-size:25px;
+      letter-spacing:-.03em;
+    }
+
+    .website-service p{
+      margin:0;
+      max-width:700px;
+      color:#64748b;
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .site-price{
+      text-align:right;
+      min-width:210px;
+    }
+
+    .site-price strong{
+      display:block;
+      font-size:29px;
+      letter-spacing:-.04em;
+    }
+
+    .site-price span{
+      display:block;
+      color:#64748b;
+      font-size:11px;
+      font-weight:800;
+    }
+
+    .site-price .monthly{
+      margin-top:10px;
+      font-size:19px;
+      font-weight:900;
+      color:#0f172a;
+    }
+
+    .cta{
+      padding:88px 0;
+    }
+
+    .cta-box{
+      border-radius:34px;
+      padding:54px;
+      background:linear-gradient(135deg,#020817,#0b1324 72%,#172554);
+      color:#fff;
+      display:grid;
+      grid-template-columns:1fr .78fr;
+      gap:42px;
+      align-items:center;
+      box-shadow:0 35px 90px rgba(2,8,23,.25);
+    }
+
+    .cta-box h2{margin-top:0}
+
+    .cta-box p{
+      color:#cbd5e1;
+      font-size:16px;
+      line-height:1.7;
+    }
+
+    .contact{
+      background:white;
+      color:#0f172a;
+      padding:22px;
+      border-radius:22px;
+    }
+
+    .contact label{
+      display:block;
+      margin-bottom:12px;
+      color:#64748b;
+      text-transform:uppercase;
+      letter-spacing:.07em;
+      font-size:10px;
+      font-weight:900;
+    }
+
+    .contact input,
+    .contact textarea{
+      width:100%;
+      margin-top:6px;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid #e2e8f0;
+      background:#f8fafc;
+      font:inherit;
+    }
+
+    .contact textarea{
+      resize:vertical;
+      min-height:82px;
+    }
+
+    .contact .btn{
+      width:100%;
+    }
+
+    footer{
+      background:#fff;
+      border-top:1px solid var(--border);
+      padding:29px 0;
+    }
+
+    .footer{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:20px;
+      color:#64748b;
+      font-size:12px;
+    }
+
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:9px;
+      color:#0f172a;
+      font-weight:800;
+    }
+
+    .footer-brand img{
+      height:32px;
+      width:auto;
+      border-radius:8px;
+    }
+
+    .footer-links{
+      display:flex;
       gap:18px;
       flex-wrap:wrap;
     }
-    @media (max-width: 980px){
-      .hero-grid,.dashboard-grid,.dark-grid,.contact-grid,.feature-grid,.steps-grid,.benefit-grid,.stats,.form-grid,.cadence-grid{
-        grid-template-columns:1fr;
+
+    @media(max-width:1020px){
+      .nav-links{display:none}
+      .hero-grid,
+      .split,
+      .cta-box{grid-template-columns:1fr}
+      .revenue-grid{grid-template-columns:repeat(2,1fr)}
+      .platform-grid{grid-template-columns:repeat(2,1fr)}
+      .pricing-grid{
+        grid-template-columns:repeat(2,1fr);
+        max-width:820px;
+        margin:0 auto;
       }
-      h1{font-size:42px}
-      h2{font-size:32px}
-      .nav-links{
-        display:none;
-      }
+      .price-card.popular{transform:none}
+      .cadence-flow{grid-template-columns:repeat(3,1fr)}
+      .flow-step:not(:last-child):after{display:none}
+    }
+
+    @media(max-width:650px){
+      .container{width:calc(100% - 24px)}
+      .brand span{display:none}
+      .nav-actions .btn-outline{display:none}
+      h1{font-size:48px}
+      .hero-copy{font-size:16px}
+      .results,
+      .revenue-grid,
+      .platform-grid,
+      .pricing-grid{grid-template-columns:1fr}
+      .hero-actions .btn{width:100%}
+      .app-window{padding:7px}
+      .app-inner{grid-template-columns:82px 1fr}
+      .app-content{padding:13px}
+      .sidebar{padding:13px 6px}
+      .mini-brand span{display:none}
+      .side-item{font-size:6px}
+      .metric-grid{grid-template-columns:1fr}
+      .bottom-grid{grid-template-columns:1fr}
+      .cadence-flow{grid-template-columns:1fr}
+      .section{padding:64px 0}
+      .cta-box{padding:30px 20px}
+      .site-price{text-align:left}
     }
   </style>
 </head>
+
 <body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <img src="logo.png" alt="ProfX" style="height:52px;width:auto" />
-      <div class="nav-links">
-        <a href="#how">How it works</a>
-        <a href="#cadences">Text cadences</a>
-        <a href="#analytics">Analytics</a>
-        <a href="#faq">FAQ</a>
-        <a class="btn btn-dark" href="https://calendly.com/jake-getprofx/30min" target="_blank">Start Closing More Jobs</a>
-      </div>
-    </div>
-  </header>
 
-  <section class="hero">
-    <div class="container hero-grid">
+<header class="topbar">
+  <div class="container nav">
+
+    <a class="brand" href="#">
+      <img src="logo.png" alt="ProfX" />
       <div>
-        <div class="badge">Veteran-owned & operated</div>
-        <h1>Turn missed quotes into profit.</h1>
-        <p class="sub">ProfX helps home service businesses automatically follow up on quotes, recover lost revenue, and understand what services customers are turning down and why.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://calendly.com/jake-getprofx/30min" target="_blank">Start Closing More Jobs</a>
-          <a class="btn btn-outline" href="mailto:info@getprofx.com">Contact Us</a>
+        <strong>ProfX</strong>
+        <span>Revenue & Operations Platform</span>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#platform">Platform</a>
+      <a href="#revenue">CRM & Sales</a>
+      <a href="#ai">AI & Automation</a>
+      <a href="#operations">Operations</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a class="btn btn-outline" href="mailto:info@getprofx.com">Contact</a>
+      <a
+        class="btn btn-dark"
+        href="https://calendly.com/jake-getprofx/30min"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Book a Demo</a>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        The all-in-one platform for home service companies
+      </div>
+
+      <h1>Run your entire business in one place — and close more work.</h1>
+
+      <p class="hero-copy">
+        ProfX brings your <strong>CRM, sales pipeline, quoting, customer texting,
+        scheduling, dispatch, field operations, invoicing, customer portal,
+        analytics, automations, and AI</strong> into one connected platform —
+        while helping your team turn more opportunities into booked revenue.
+      </p>
+
+      <div class="hero-actions">
+        <a
+          class="btn btn-primary"
+          href="https://calendly.com/jake-getprofx/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+        >See ProfX in Action</a>
+
+        <a class="btn btn-outline" href="#platform">Explore the Platform</a>
+      </div>
+
+      <p class="hero-note">
+        Roofing • HVAC • Plumbing • Electrical • Solar • Landscaping • General Contractors
+      </p>
+
+      <div class="results">
+        <div class="result">
+          <strong>Run it all in ProfX</strong>
+          <span>CRM, sales, scheduling & operations</span>
+        </div>
+
+        <div class="result">
+          <strong>Close more work</strong>
+          <span>Automated SMS follow-up & sales visibility</span>
+        </div>
+
+        <div class="result">
+          <strong>Know what needs attention</strong>
+          <span>AI monitoring & operational intelligence</span>
         </div>
       </div>
+    </div>
 
-      <div id="analytics" class="panel">
-        <div class="dashboard">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+    <div class="app-window">
+      <div class="app-inner">
+
+        <aside class="sidebar">
+          <div class="mini-brand">
+            <div class="mark">PX</div>
+            <span>ProfX</span>
+          </div>
+
+          <div class="side-label">Revenue</div>
+          <div class="side-item active">Revenue Overview</div>
+          <div class="side-item">Pipeline</div>
+          <div class="side-item">Quotes</div>
+          <div class="side-item">Text Cadences</div>
+
+          <div class="side-label">Intelligence</div>
+          <div class="side-item">AI Actions</div>
+          <div class="side-item">Analytics</div>
+
+          <div class="side-label">Operations</div>
+          <div class="side-item">Dispatch</div>
+          <div class="side-item">Calendar</div>
+          <div class="side-item">Jobs</div>
+          <div class="side-item">Crews</div>
+        </aside>
+
+        <div class="app-content">
+
+          <div class="mock-header">
             <div>
-              <div style="font-size:13px;color:#94a3b8">Revenue snapshot</div>
-              <h3>Profit recovery dashboard</h3>
+              <p>Revenue command center</p>
+              <h3>Opportunities needing attention</h3>
             </div>
-            <div style="padding:7px 12px;border-radius:999px;background:rgba(74,222,128,.14);color:#a7f3d0;font-size:12px;font-weight:700">Live insights</div>
+            <div class="health">● Monitoring active</div>
           </div>
 
-          <div class="stats">
-            <div class="stat">
-              <p>Lost revenue identified</p>
-              <strong>$18,420</strong>
+          <div class="metric-grid">
+            <div class="metric">
+              <span>Open quote value</span>
+              <strong>$184,250</strong>
             </div>
-            <div class="stat">
-              <p>Recovered by follow-up</p>
-              <strong style="color:#9ae6b4">$6,780</strong>
+
+            <div class="metric">
+              <span>At-risk revenue</span>
+              <strong>$38,450</strong>
             </div>
-            <div class="stat">
-              <p>Close rate change</p>
-              <strong>+14%</strong>
+
+            <div class="metric">
+              <span>Close rate</span>
+              <strong>42%</strong>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <strong>AI Opportunity Monitoring</strong>
+              <span>4 need attention</span>
+            </div>
+
+            <div class="risk-list">
+
+              <div class="risk">
+                <div>
+                  <strong>Johnson Residence · $19,750</strong>
+                  <small>Quote opened twice · no response for 5 days</small>
+                </div>
+                <div class="risk-badge risk-high">High Risk</div>
+              </div>
+
+              <div class="risk">
+                <div>
+                  <strong>Clark Roofing Project · $14,800</strong>
+                  <small>Follow-up cadence completed · customer not contacted again</small>
+                </div>
+                <div class="risk-badge risk-med">Needs Action</div>
+              </div>
+
+              <div class="risk">
+                <div>
+                  <strong>Walker Residence · $12,600</strong>
+                  <small>Approved quote · production not yet scheduled</small>
+                </div>
+                <div class="risk-badge risk-med">Workflow Gap</div>
+              </div>
+
             </div>
           </div>
 
-          <div class="dashboard-grid">
-            <div class="dashboard-card">
-              <div style="display:flex;justify-content:space-between;gap:12px">
-                <div style="font-size:14px;font-weight:700;color:#dbe4f0">Service types being turned down</div>
-                <div style="font-size:12px;color:#94a3b8">Last 30 days</div>
+          <div class="bottom-grid">
+
+            <div class="panel" style="margin-top:0">
+              <div class="panel-head">
+                <strong>Active Text Cadence</strong>
+                <span>Quote Follow-Up</span>
               </div>
 
-              <div class="bar-row">
-                <div class="bar-head"><span>Roof replacement</span><span>62%</span></div>
-                <div class="bar-bg"><div class="bar-fill" style="width:62%"></div></div>
+              <div class="cadence-step">
+                <div class="cadence-dot">✓</div>
+                <div>
+                  <strong>Quote sent</strong>
+                  <span>Customer receives estimate link</span>
+                </div>
               </div>
-              <div class="bar-row">
-                <div class="bar-head"><span>HVAC install</span><span>44%</span></div>
-                <div class="bar-bg"><div class="bar-fill" style="width:44%"></div></div>
+
+              <div class="cadence-step">
+                <div class="cadence-dot">✓</div>
+                <div>
+                  <strong>Day 2 follow-up</strong>
+                  <span>Automatic SMS sent</span>
+                </div>
               </div>
-              <div class="bar-row">
-                <div class="bar-head"><span>Plumbing repipe</span><span>31%</span></div>
-                <div class="bar-bg"><div class="bar-fill" style="width:31%"></div></div>
+
+              <div class="cadence-step">
+                <div class="cadence-dot">3</div>
+                <div>
+                  <strong>Day 5 check-in</strong>
+                  <span>Scheduled automatically</span>
+                </div>
               </div>
-              <div class="bar-row">
-                <div class="bar-head"><span>Exterior repair</span><span>18%</span></div>
-                <div class="bar-bg"><div class="bar-fill" style="width:18%"></div></div>
+
+              <div class="cadence-step">
+                <div class="cadence-dot">4</div>
+                <div>
+                  <strong>Final opportunity follow-up</strong>
+                  <span>Keep the quote from going cold</span>
+                </div>
               </div>
             </div>
 
-            <div class="dashboard-card">
-              <div style="font-size:14px;font-weight:700;color:#dbe4f0">Top reasons quotes are lost</div>
-              <div class="reason"><span>Price hesitation</span><strong>38%</strong></div>
-              <div class="reason"><span>No follow-up after estimate</span><strong>24%</strong></div>
-              <div class="reason"><span>Timing / delayed decision</span><strong>19%</strong></div>
-              <div class="reason"><span>Went with competitor</span><strong>11%</strong></div>
-              <div class="reason"><span>Could not reach homeowner</span><strong>8%</strong></div>
+            <div class="panel" style="margin-top:0">
+              <div class="panel-head">
+                <strong>Why Deals Are Lost</strong>
+                <span>Last 90 Days</span>
+              </div>
+
+              <div class="loss-bar">
+                <div class="loss-label">
+                  <span>Price</span><span>31%</span>
+                </div>
+                <div class="bar"><div style="width:31%"></div></div>
+              </div>
+
+              <div class="loss-bar">
+                <div class="loss-label">
+                  <span>No response</span><span>24%</span>
+                </div>
+                <div class="bar"><div style="width:24%"></div></div>
+              </div>
+
+              <div class="loss-bar">
+                <div class="loss-label">
+                  <span>Competitor</span><span>19%</span>
+                </div>
+                <div class="bar"><div style="width:19%"></div></div>
+              </div>
+
+              <div class="loss-bar">
+                <div class="loss-label">
+                  <span>Timing</span><span>14%</span>
+                </div>
+                <div class="bar"><div style="width:14%"></div></div>
+              </div>
             </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="platform">
+  <div class="container">
+
+    <div class="section-head center">
+      <div class="kicker">One Connected Platform</div>
+      <h2>Everything your company needs. Working together.</h2>
+      <p>
+        Stop piecing together separate systems for sales, customer communication,
+        scheduling, field work, and reporting. ProfX connects your entire customer
+        journey from the first lead through the completed job.
+      </p>
+    </div>
+
+    <div class="revenue-grid">
+
+      <article class="revenue-card">
+        <div class="icon">👥</div>
+        <h3>Complete CRM</h3>
+        <p>
+          Manage leads, customers, contact information, activity, notes,
+          opportunities, pipeline stages, and customer history in one place.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">📈</div>
+        <h3>Sales Pipeline</h3>
+        <p>
+          Track opportunities from lead to quote to closed job with clear
+          visibility into pipeline value, deal status, and next steps.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">🧾</div>
+        <h3>Quotes & Approvals</h3>
+        <p>
+          Create professional quotes, send customer approval links, track
+          engagement, and move approved work directly into production.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">💬</div>
+        <h3>Customer Texting</h3>
+        <p>
+          Keep customer conversations connected to their records while
+          automating follow-up, reminders, and quote cadences.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">📅</div>
+        <h3>Scheduling & Calendar</h3>
+        <p>
+          Schedule work, manage customer scheduling requests, see availability,
+          and keep jobs organized across your operation.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">🚚</div>
+        <h3>Dispatch & Crews</h3>
+        <p>
+          Assign crews and employees, coordinate field teams, and keep the
+          office connected to what is happening in the field.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">🛠️</div>
+        <h3>Jobs & Field Operations</h3>
+        <p>
+          Give your team access to job details, customer information, notes,
+          photos, directions, job status, and completion workflows.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">🏠</div>
+        <h3>Customer Portal</h3>
+        <p>
+          Give customers one place to view quotes, project information,
+          photos, invoices, balances, and payment links.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">💳</div>
+        <h3>Invoices & Payments</h3>
+        <p>
+          Track invoice amounts, partial payments, outstanding balances,
+          payment status, and customer payment links.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">📊</div>
+        <h3>Analytics</h3>
+        <p>
+          Understand revenue, sales performance, close rates, lost deals,
+          operational activity, and where opportunities are getting stuck.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">⚡</div>
+        <h3>Automations</h3>
+        <p>
+          Automate repetitive follow-up and operational actions so important
+          work keeps moving even when your team gets busy.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">✦</div>
+        <h3>AI Intelligence</h3>
+        <p>
+          Surface at-risk opportunities, unanswered conversations, stalled
+          workflows, and important next actions before they become lost revenue.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="revenue">
+  <div class="container">
+
+    <div class="section-head center">
+      <div class="kicker">Built-In Revenue Engine</div>
+      <h2>More than a CRM. ProfX helps you win more of the work inside it.</h2>
+      <p>
+        Most CRMs organize opportunities. ProfX also helps your team act on them.
+        Automated text cadences, AI monitoring, workflow intelligence, and lost-deal
+        analytics help turn more of your existing pipeline into revenue.
+      </p>
+    </div>
+
+    <div class="revenue-grid">
+
+      <article class="revenue-card">
+        <div class="icon">💬</div>
+        <h3>Automated Text Cadences</h3>
+        <p>
+          Keep leads and open quotes moving with structured SMS follow-up that
+          continues even when the office gets busy.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">⚡</div>
+        <h3>AI Opportunity Monitoring</h3>
+        <p>
+          ProfX surfaces quotes and conversations showing signs of going cold so
+          your team can act before the opportunity disappears.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">📊</div>
+        <h3>Lost-Deal Intelligence</h3>
+        <p>
+          Track why customers say no and turn lost opportunities into data you
+          can use to improve pricing, follow-up, sales training, and offers.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">🔎</div>
+        <h3>Workflow Gap Detection</h3>
+        <p>
+          Identify important next steps that never happened—like approved work
+          that was never scheduled or customer replies that still need attention.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">🎯</div>
+        <h3>Sales Visibility</h3>
+        <p>
+          See open pipeline value, quote performance, close rates, follow-up
+          activity, service performance, and sales opportunities in one place.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">💵</div>
+        <h3>Turn More Pipeline Into Revenue</h3>
+        <p>
+          Connect sales directly to scheduling and production so sold work does
+          not get stuck between the estimate and the calendar.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="container">
+
+    <div class="section-head center">
+      <div class="kicker">Quote Follow-Up</div>
+      <h2>Build the follow-up discipline your sales team never has time for.</h2>
+      <p>
+        ProfX keeps communication moving automatically while still bringing your
+        people in when a real customer response needs attention.
+      </p>
+    </div>
+
+    <div class="cadence-flow">
+      <div class="flow-step">
+        <strong>Quote Sent</strong>
+        <span>Opportunity starts</span>
+      </div>
+
+      <div class="flow-step">
+        <strong>SMS Follow-Up</strong>
+        <span>Automatic cadence</span>
+      </div>
+
+      <div class="flow-step">
+        <strong>Customer Opens</strong>
+        <span>Engagement tracked</span>
+      </div>
+
+      <div class="flow-step">
+        <strong>AI Flags Risk</strong>
+        <span>Needs attention</span>
+      </div>
+
+      <div class="flow-step">
+        <strong>Customer Replies</strong>
+        <span>Team alerted</span>
+      </div>
+
+      <div class="flow-step">
+        <strong>Job Won</strong>
+        <span>Move to production</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="ai">
+  <div class="container split">
+
+    <div>
+      <div class="section-head">
+        <div class="kicker">AI-Powered Business Intelligence</div>
+        <h2>ProfX helps your team see what needs attention — before it gets missed.</h2>
+        <p>
+          ProfX uses AI and operational data to surface deals, conversations,
+          and workflow steps that deserve attention so your team knows where
+          to focus instead of digging through the CRM looking for problems.
+        </p>
+      </div>
+
+      <ul class="check-list">
+        <li><span class="check">✓</span>Quotes sitting without customer engagement</li>
+        <li><span class="check">✓</span>Follow-up sequences that ended without a resolution</li>
+        <li><span class="check">✓</span>Customer messages waiting for a response</li>
+        <li><span class="check">✓</span>Approved jobs that have not reached scheduling</li>
+        <li><span class="check">✓</span>Scheduling and production gaps that deserve attention</li>
+        <li><span class="check">✓</span>Operational tasks that have stalled before completion</li>
+      </ul>
+    </div>
+
+    <div class="visual-card">
+      <div class="panel-head">
+        <strong style="font-size:15px">ProfX Intelligence Feed</strong>
+        <span>Live operational signals</span>
+      </div>
+
+      <div class="insight">
+        <div class="insight-top">
+          <strong>$18,400 quote may be slipping</strong>
+          <span class="flag flag-red">At Risk</span>
+        </div>
+        <p>Customer viewed the quote twice but has not replied in 6 days.</p>
+      </div>
+
+      <div class="insight">
+        <div class="insight-top">
+          <strong>Customer response needs attention</strong>
+          <span class="flag flag-blue">Reply</span>
+        </div>
+        <p>New inbound message on an active $12,600 opportunity.</p>
+      </div>
+
+      <div class="insight">
+        <div class="insight-top">
+          <strong>Approved project hasn't moved forward</strong>
+          <span class="flag flag-amber">Workflow Gap</span>
+        </div>
+        <p>Quote approved 3 days ago but no production date has been scheduled.</p>
+      </div>
+
+      <div class="insight">
+        <div class="insight-top">
+          <strong>Open production capacity detected</strong>
+          <span class="flag flag-blue">Opportunity</span>
+        </div>
+        <p>Friday afternoon has available crew capacity for scheduled work.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section dark" id="operations">
+  <div class="container">
+
+    <div class="section-head center">
+      <div class="kicker">From Sale to Completed Job</div>
+      <h2>Your CRM shouldn't stop working when the deal closes.</h2>
+      <p>
+        ProfX connects the sales side of your business directly to scheduling,
+        dispatch, field operations, customer communication, invoicing, and
+        completion — eliminating the handoff between disconnected systems.
+      </p>
+    </div>
+
+    <div class="platform-grid">
+
+      <div class="platform-card">
+        <h3>Lead → Opportunity</h3>
+        <p>
+          Capture customers and move opportunities through a structured sales pipeline.
+        </p>
+      </div>
+
+      <div class="platform-card">
+        <h3>Opportunity → Quote</h3>
+        <p>
+          Build estimates, send customer approval links, and track the sales process.
+        </p>
+      </div>
+
+      <div class="platform-card">
+        <h3>Quote → Follow-Up</h3>
+        <p>
+          Automated text cadences help keep open estimates from quietly going cold.
+        </p>
+      </div>
+
+      <div class="platform-card">
+        <h3>Approval → Scheduling</h3>
+        <p>
+          Move sold work into scheduling and production without losing the handoff.
+        </p>
+      </div>
+
+      <div class="platform-card">
+        <h3>Scheduling → Dispatch</h3>
+        <p>
+          Coordinate employees, crews, calendars, customer requests, and job timing.
+        </p>
+      </div>
+
+      <div class="platform-card">
+        <h3>Dispatch → Field</h3>
+        <p>
+          Give technicians the job information, notes, photos, directions, and tools they need.
+        </p>
+      </div>
+
+      <div class="platform-card">
+        <h3>Field → Completion</h3>
+        <p>
+          Track progress, job photos, field notes, statuses, and completion workflows.
+        </p>
+      </div>
+
+      <div class="platform-card">
+        <h3>Completion → Revenue</h3>
+        <p>
+          Keep invoices, balances, payment links, customer records, and reporting connected.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section pricing" id="pricing">
+  <div class="container">
+
+    <div class="section-head center">
+      <div class="kicker">Simple Pricing</div>
+      <h2>One complete platform. Every plan.</h2>
+      <p>
+        Every ProfX customer gets the complete CRM, sales, communication,
+        scheduling, dispatch, field operations, analytics, automation, and AI platform.
+        Pricing simply scales with your team size and messaging usage.
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <article class="price-card">
+        <div class="plan-name">Solo</div>
+
+        <div class="price">
+          <strong>$149</strong>
+          <span>/ month</span>
+        </div>
+
+        <p class="plan-desc">
+          For owner-operators who want the full revenue and operations platform.
+        </p>
+
+        <div class="limits">
+          <div class="limit">
+            <strong>1</strong>
+            <span>User</span>
+          </div>
+          <div class="limit">
+            <strong>1,000</strong>
+            <span>SMS segments</span>
           </div>
         </div>
-      </div>
+
+        <ul class="plan-features">
+          <li>Complete ProfX platform</li>
+          <li>Text cadences & follow-up</li>
+          <li>AI opportunity monitoring</li>
+          <li>Lost-deal analytics</li>
+          <li>CRM, quotes & pipeline</li>
+          <li>Scheduling, jobs & invoices</li>
+        </ul>
+
+        <a
+          class="btn btn-outline"
+          href="https://calendly.com/jake-getprofx/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Book a Demo</a>
+      </article>
+
+      <article class="price-card">
+        <div class="plan-name">Starter</div>
+
+        <div class="price">
+          <strong>$349</strong>
+          <span>/ month</span>
+        </div>
+
+        <p class="plan-desc">
+          For small service teams that want the complete ProfX platform.
+        </p>
+
+        <div class="limits">
+          <div class="limit">
+            <strong>3</strong>
+            <span>Included users</span>
+          </div>
+          <div class="limit">
+            <strong>2,500</strong>
+            <span>SMS segments</span>
+          </div>
+        </div>
+
+        <ul class="plan-features">
+          <li>Complete ProfX platform</li>
+          <li>Text cadences & follow-up</li>
+          <li>AI opportunity monitoring</li>
+          <li>Lost-deal analytics</li>
+          <li>CRM, quotes & pipeline</li>
+          <li>Scheduling, dispatch & field operations</li>
+        </ul>
+
+        <a
+          class="btn btn-outline"
+          href="https://calendly.com/jake-getprofx/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Book a Demo</a>
+      </article>
+
+      <article class="price-card popular">
+        <div class="popular-badge">Most Popular</div>
+        <div class="plan-name">Growth</div>
+
+        <div class="price">
+          <strong>$599</strong>
+          <span>/ month</span>
+        </div>
+
+        <p class="plan-desc">
+          For growing contractors with larger sales, office, and production teams.
+        </p>
+
+        <div class="limits">
+          <div class="limit">
+            <strong>8</strong>
+            <span>Included users</span>
+          </div>
+          <div class="limit">
+            <strong>5,000</strong>
+            <span>SMS segments</span>
+          </div>
+        </div>
+
+        <ul class="plan-features">
+          <li>Complete ProfX platform</li>
+          <li>Text cadences & follow-up</li>
+          <li>AI opportunity monitoring</li>
+          <li>Lost-deal analytics</li>
+          <li>CRM, quotes & pipeline</li>
+          <li>Scheduling, dispatch & field operations</li>
+        </ul>
+
+        <a
+          class="btn btn-primary"
+          href="https://calendly.com/jake-getprofx/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Book a Growth Demo</a>
+      </article>
+
+      <article class="price-card">
+        <div class="plan-name">Pro</div>
+
+        <div class="price">
+          <strong>$999</strong>
+          <span>/ month</span>
+        </div>
+
+        <p class="plan-desc">
+          For established home service businesses running larger operations.
+        </p>
+
+        <div class="limits">
+          <div class="limit">
+            <strong>18</strong>
+            <span>Included users</span>
+          </div>
+          <div class="limit">
+            <strong>10,000</strong>
+            <span>SMS segments</span>
+          </div>
+        </div>
+
+        <ul class="plan-features">
+          <li>Complete ProfX platform</li>
+          <li>Text cadences & follow-up</li>
+          <li>AI opportunity monitoring</li>
+          <li>Lost-deal analytics</li>
+          <li>CRM, quotes & pipeline</li>
+          <li>Scheduling, dispatch & field operations</li>
+        </ul>
+
+        <a
+          class="btn btn-dark"
+          href="https://calendly.com/jake-getprofx/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Book a Pro Demo</a>
+      </article>
+
     </div>
-  </section>
 
-  <section class="section-light">
-    <div class="container feature-grid">
-      <div class="card">
-        <h3>Recover missed revenue</h3>
-        <p>Automatically follow up on quotes that would have otherwise gone cold and turn missed opportunities into profit.</p>
-      </div>
-      <div class="card">
-        <h3>Know what services get turned down</h3>
-        <p>Track what homeowners decline, where deals stall, and what reasons show up most often across your pipeline.</p>
-      </div>
-      <div class="card">
-        <h3>Focus on the jobs that matter</h3>
-        <p>See which quotes need attention now, which services underperform, and where financing or faster follow-up can improve close rate.</p>
-      </div>
+    <div class="pricing-note">
+      Starter, Growth, and Pro can add users for
+      <strong>$49/user per month</strong>.
+      Additional messaging is
+      <strong>$39 per 2,500 SMS segments</strong>.
+      Solo is limited to one user.
     </div>
-  </section>
 
-  <section id="how" class="section">
-    <div class="container">
-      <div class="eyebrow">How it works</div>
-      <h2>Built to capture revenue your current workflow misses.</h2>
-      <p class="lead">ProfX is not another contractor CRM. It is the layer that helps home service businesses follow up faster, recover more jobs, and understand what is hurting conversion.</p>
+    <div class="website-service">
 
-      <div class="steps-grid">
-        <div class="card">
-          <div class="step-badge">1</div>
-          <h3>Connect your quote workflow</h3>
-          <p>Start with your existing quotes, leads, or customer info. ProfX is built to sit on top of your current process, not replace it.</p>
-        </div>
-        <div class="card">
-          <div class="step-badge">2</div>
-          <h3>Launch automated follow-up</h3>
-          <p>Text and email cadences go out automatically so homeowners do not slip through the cracks after estimates are sent.</p>
-        </div>
-        <div class="card">
-          <div class="step-badge">3</div>
-          <h3>See what is costing you profit</h3>
-          <p>Measure lost revenue, quote performance, service-level conversion, and the reasons jobs are being turned down.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="cadences" class="section-light">
-    <div class="container">
-      <div class="eyebrow">Text cadencing</div>
-      <h2>Automatic follow-up that keeps quotes from going cold.</h2>
-      <p class="lead">Most missed jobs are not lost because the homeowner said no. They are lost because the estimate was sent, life got busy, and nobody followed up at the right time. ProfX keeps the conversation moving automatically.</p>
-
-      <div class="cadence-grid">
-        <div class="card">
-          <h3>Follow up after the quote is sent</h3>
-          <p>ProfX can remind homeowners after an estimate goes out, check in when they have not responded, and help your team stay top-of-mind without manually chasing every quote.</p>
-        </div>
-        <div class="card">
-          <h3>Use the right tone for the situation</h3>
-          <p>Choose professional, friendly, or urgent follow-up styles depending on the quote. This helps your message feel human while still keeping the process consistent.</p>
-        </div>
-        <div class="card">
-          <h3>Close more leads and quotes</h3>
-          <p>Automated cadences help bring old quotes back into focus, surface follow-up due opportunities, and give reps a clearer path to turn open estimates into won jobs.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="dark-band">
-    <div class="container dark-grid">
       <div>
-        <div class="eyebrow" style="color:#86efac">Why ProfX</div>
-        <h2 style="color:white">Built for operators who know they should be closing more jobs.</h2>
-        <p class="lead" style="color:#cbd5e1">Home service businesses already pay for leads, spend time on estimates, and still watch revenue slip through the cracks. ProfX is built to help capture that missed profit without replacing everything else you already use.</p>
-        <div style="margin-top:28px">
-          <a class="btn btn-primary" href="https://calendly.com/jake-getprofx/30min" target="_blank">Start Closing More Jobs</a>
-        </div>
+        <div class="plan-name">Optional Website Service</div>
+        <h3>Need a website that helps generate leads too?</h3>
+        <p>
+          ProfX can build your home service business a professional,
+          mobile-friendly website, connect it to your domain, deploy it,
+          structure lead forms and calls-to-action, and provide ongoing
+          website management after launch.
+        </p>
       </div>
 
-      <div class="benefit-grid">
-        <div class="benefit">Track quote outcomes by service type</div>
-        <div class="benefit">Identify why homeowners turn work down</div>
-        <div class="benefit">See what revenue is being left behind</div>
-        <div class="benefit">Automate follow-up without adding admin work</div>
-        <div class="benefit">Create accountability around quote performance</div>
-        <div class="benefit">Focus on profit instead of just activity</div>
+      <div class="site-price">
+        <strong>$949</strong>
+        <span>One-time website build</span>
+
+        <div class="monthly">$75/month</div>
+        <span>Website management</span>
       </div>
+
     </div>
-  </section>
 
-  <section id="faq" class="section">
-    <div class="container" style="max-width:900px">
-      <div class="eyebrow" style="text-align:center">FAQ</div>
-      <h2 style="text-align:center">Questions contractors ask before they start.</h2>
+  </div>
+</section>
 
-      <div class="faq-list">
-        <details>
-          <summary>Is ProfX a CRM?</summary>
-          <p>No. ProfX is a revenue capture and analytics layer built for home service businesses. It helps you recover jobs, automate follow-up, and understand why quotes are not converting.</p>
-        </details>
-        <details>
-          <summary>How do the text cadences work?</summary>
-          <p>ProfX can start follow-up sequences after quotes are sent, remind homeowners when they have not responded, and help your team bring open estimates back into active conversation.</p>
-        </details>
-        <details>
-          <summary>Can automated follow-up help close more quotes?</summary>
-          <p>Yes. ProfX helps close more quotes by making sure follow-up happens consistently, at the right time, with messaging that keeps the homeowner engaged instead of letting the opportunity go cold.</p>
-        </details>
-        <details>
-          <summary>Who is this built for first?</summary>
-          <p>ProfX is built for home service businesses, with early focus on roofing and other estimate-driven service companies like HVAC, plumbing, and remodeling.</p>
-        </details>
-        <details>
-          <summary>What kind of analytics does it focus on?</summary>
-          <p>ProfX is designed to show what services clients are turning down, where quotes are being lost, which follow-up sequences perform best, and where missed revenue is hiding.</p>
-        </details>
-        <details>
-          <summary>Do I need to replace my current system?</summary>
-          <p>No. The goal is to work alongside the systems you already use and become the layer that helps you close more jobs and understand what is hurting conversion.</p>
-        </details>
-      </div>
-    </div>
-  </section>
+<section class="cta">
+  <div class="container">
+    <div class="cta-box">
 
-  <section class="section-light">
-    <div class="container contact-grid">
       <div>
-        <div class="eyebrow">Get in touch</div>
-        <h2>See how ProfX can fit your workflow.</h2>
-        <p class="lead">Book a conversation, send a note, or start with a demo. We are building ProfX to help home service businesses recover lost revenue and close more jobs.</p>
+        <div class="kicker">One system for the entire customer journey.</div>
+        <h2>Run the business. Follow every opportunity. Close more work.</h2>
+
+        <p>
+          See how ProfX combines a complete CRM with quoting, automated text
+          follow-up, AI opportunity monitoring, scheduling, dispatch, field operations,
+          customer communication, invoicing, analytics, and automation in one platform
+          built specifically for home service companies.
+        </p>
+
         <div class="hero-actions">
-          <a class="btn btn-dark" href="https://calendly.com/jake-getprofx/30min" target="_blank">Book a Demo</a>
-          <a class="btn btn-outline" href="mailto:info@getprofx.com">Email Us</a>
+          <a
+            class="btn btn-primary"
+            href="https://calendly.com/jake-getprofx/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Book a 30-Minute Demo</a>
+
+          <a class="btn btn-outline" href="mailto:info@getprofx.com">
+            Email ProfX
+          </a>
         </div>
       </div>
 
-      <form action="mailto:info@getprofx.com" method="post" enctype="text/plain">
-        <div class="form-grid">
-          <div>
-            <label>First name
-              <input name="first_name" placeholder="Jake" />
-            </label>
-          </div>
-          <div>
-            <label>Last name
-              <input name="last_name" placeholder="Smith" />
-            </label>
-          </div>
-        </div>
-        <div class="form-grid">
-          <div>
-            <label>Business email
-              <input type="email" name="email" placeholder="you@company.com" />
-            </label>
-          </div>
-          <div>
-            <label>Company
-              <input name="company" placeholder="ABC Roofing" />
-            </label>
-          </div>
-        </div>
-        <div>
-          <label>What do you want help with?
-            <textarea name="message" placeholder="We want to follow up on quotes faster and understand why homeowners are not moving forward."></textarea>
-          </label>
-        </div>
-        <button class="btn btn-primary" type="submit" style="border:none;cursor:pointer">Submit Inquiry</button>
-        <p style="font-size:12px;color:#64748b;margin-top:10px">Want to skip the form? Book directly through Calendly or email info@getprofx.com.</p>
+      <form
+        class="contact"
+        action="mailto:info@getprofx.com"
+        method="post"
+        enctype="text/plain"
+      >
+        <label>
+          Your Name
+          <input name="name" placeholder="Your name" />
+        </label>
+
+        <label>
+          Company
+          <input name="company" placeholder="ABC Roofing" />
+        </label>
+
+        <label>
+          Where are opportunities slipping through?
+          <textarea
+            name="message"
+            placeholder="Tell us about your lead follow-up, quoting, scheduling, or sales process."
+          ></textarea>
+        </label>
+
+        <button class="btn btn-dark" type="submit">
+          Talk to ProfX
+        </button>
       </form>
-    </div>
-  </section>
 
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div style="display:flex;align-items:center;gap:12px">
-        <img src="icon.png" alt="ProfX icon" style="height:34px;width:34px;border-radius:10px" />
-        <span>© 2026 ProfX Technologies. All rights reserved.</span>
-      </div>
-      <div style="display:flex;gap:18px;flex-wrap:wrap">
-        <a href="https://calendly.com/jake-getprofx/30min" target="_blank">Book Demo</a>
-        <a href="mailto:info@getprofx.com">Contact</a>
-      </div>
     </div>
-  </footer>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer">
+
+    <div class="footer-brand">
+      <img src="logo.png" alt="ProfX" />
+      <span>© 2026 ProfX Technologies. All rights reserved.</span>
+    </div>
+
+    <div class="footer-links">
+      <a href="#revenue">Revenue Engine</a>
+      <a href="#platform">Platform</a>
+      <a href="#pricing">Pricing</a>
+      <a
+        href="https://calendly.com/jake-getprofx/30min"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Book Demo</a>
+      <a href="mailto:info@getprofx.com">Contact</a>
+    </div>
+
+  </div>
+</footer>
+
 </body>
 </html>
