@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.getprofx.com/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://www.getprofx.com/contractor-crm/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+  <url><loc>https://www.getprofx.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.getprofx.com/contractor-crm/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.getprofx.com/roofing-crm/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getprofx.com/hvac-crm/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getprofx.com/plumbing-crm/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getprofx.com/electrical-crm/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getprofx.com/general-contractor-crm/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.getprofx.com/resources/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.getprofx.com/resources/stop-contractor-quotes-going-cold/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.getprofx.com/resources/improve-contractor-close-rate/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.getprofx.com/resources/contractor-crm-vs-field-service-software/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
