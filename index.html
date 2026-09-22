@@ -1054,6 +1054,36 @@
       .revenue-grid,
       .platform-grid,
       .pricing-grid{grid-template-columns:1fr}
+
+      /* Keep the feature overview compact on phones without horizontal overflow. */
+      .platform-features{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:10px;
+      }
+      .platform-features .revenue-card{
+        min-width:0;
+        padding:15px;
+        border-radius:16px;
+        box-shadow:0 7px 20px rgba(15,23,42,.05);
+      }
+      .platform-features .icon{
+        width:34px;
+        height:34px;
+        margin-bottom:11px;
+        border-radius:10px;
+        font-size:15px;
+      }
+      .platform-features .revenue-card h3{
+        font-size:15px;
+        line-height:1.16;
+      }
+      .platform-features .revenue-card p{
+        margin-top:7px;
+        font-size:11px;
+        line-height:1.5;
+        overflow-wrap:anywhere;
+      }
+
       .hero-actions .btn{width:100%}
       .app-window{padding:7px}
       .app-inner{grid-template-columns:82px 1fr}
@@ -1064,9 +1094,17 @@
       .metric-grid{grid-template-columns:1fr}
       .bottom-grid{grid-template-columns:1fr}
       .cadence-flow{grid-template-columns:1fr}
-      .section{padding:64px 0}
+      .section{padding:58px 0}
+      .section-head{margin-bottom:30px}
       .cta-box{padding:30px 20px}
       .site-price{text-align:left}
+    }
+
+    @media(max-width:360px){
+      .platform-features{grid-template-columns:1fr}
+      .platform-features .revenue-card{padding:17px}
+      .platform-features .revenue-card h3{font-size:16px}
+      .platform-features .revenue-card p{font-size:11.5px}
     }
   </style>
 </head>
@@ -1340,46 +1378,55 @@
       <h2>Everything your company needs. Working together.</h2>
       <p>
         Stop piecing together separate systems for sales, customer communication,
-        scheduling, field work, and reporting. ProfX connects your entire customer
-        journey from the first lead through the completed job.
+        field work, production, payments, and reporting. ProfX connects the customer
+        journey from first lead through the completed job and post-job service.
       </p>
     </div>
 
-    <div class="revenue-grid">
+    <div class="revenue-grid platform-features">
 
       <article class="revenue-card">
         <div class="icon">👥</div>
         <h3>Complete CRM</h3>
         <p>
-          Manage leads, customers, contact information, activity, notes,
-          opportunities, pipeline stages, and customer history in one place.
+          Leads, customers, notes, activity, customer history, imports, search,
+          segments, and contact records in one place.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">📍</div>
+        <h3>Field Sales & Canvassing</h3>
+        <p>
+          Satellite and hybrid territory maps, house pins, address auto-fill,
+          configurable outcomes, field notes, rep presence, import, and export.
         </p>
       </article>
 
       <article class="revenue-card">
         <div class="icon">📈</div>
-        <h3>Sales Pipeline</h3>
+        <h3>Pipeline & Revenue Recovery</h3>
         <p>
-          Track opportunities from lead to quote to closed job with clear
-          visibility into pipeline value, deal status, and next steps.
+          Track opportunities, lead response, quote engagement, close rates,
+          lost deals, stalled revenue, and next sales actions.
         </p>
       </article>
 
       <article class="revenue-card">
         <div class="icon">🧾</div>
-        <h3>Quotes & Approvals</h3>
+        <h3>Estimating, Quotes & E-Sign</h3>
         <p>
-          Create professional quotes, send customer approval links, track
-          engagement, and move approved work directly into production.
+          Price book, rough and smart estimates, job-learning pricing insights,
+          customer approvals, signatures, and financing options.
         </p>
       </article>
 
       <article class="revenue-card">
         <div class="icon">💬</div>
-        <h3>Customer Texting</h3>
+        <h3>Texting & Customer Follow-Up</h3>
         <p>
-          Keep customer conversations connected to their records while
-          automating follow-up, reminders, and quote cadences.
+          Two-way texting, automated SMS cadences, appointment reminders,
+          customer replies, and review-request workflows.
         </p>
       </article>
 
@@ -1387,17 +1434,17 @@
         <div class="icon">📅</div>
         <h3>Scheduling & Calendar</h3>
         <p>
-          Schedule work, manage customer scheduling requests, see availability,
-          and keep jobs organized across your operation.
+          Appointments, scheduling requests, recurring work, quote visits,
+          availability, and Google Calendar sync.
         </p>
       </article>
 
       <article class="revenue-card">
         <div class="icon">🚚</div>
-        <h3>Dispatch & Crews</h3>
+        <h3>Dispatch, Crews & Capacity</h3>
         <p>
-          Assign crews and employees, coordinate field teams, and keep the
-          office connected to what is happening in the field.
+          Assign employees and crews, coordinate dispatch, monitor capacity,
+          track time, and keep office and field teams aligned.
         </p>
       </article>
 
@@ -1405,53 +1452,71 @@
         <div class="icon">🛠️</div>
         <h3>Jobs & Field Operations</h3>
         <p>
-          Give your team access to job details, customer information, notes,
-          photos, directions, job status, and completion workflows.
+          Mobile job details, customer information, directions, notes, photos,
+          requirements, statuses, completion steps, and technician tools.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">✍️</div>
+        <h3>Change Orders, Forms & Documents</h3>
+        <p>
+          Change orders, signed PDFs, project documents, fillable PDF workflows,
+          custom forms, submissions, and customer-facing documents.
         </p>
       </article>
 
       <article class="revenue-card">
         <div class="icon">🏠</div>
-        <h3>Customer Portal</h3>
+        <h3>Customer Portal & Warranty</h3>
         <p>
-          Give customers one place to view quotes, project information,
-          photos, invoices, balances, and payment links.
+          Give customers one place for quotes, jobs, photos, documents, invoices,
+          balances, payment links, warranties, and post-job service.
         </p>
       </article>
 
       <article class="revenue-card">
         <div class="icon">💳</div>
-        <h3>Invoices & Payments</h3>
+        <h3>Invoices, Payments & Financing</h3>
         <p>
-          Track invoice amounts, partial payments, outstanding balances,
-          payment status, and customer payment links.
+          Invoices, partial payments, deposit links, reminders, payment history,
+          processor reconciliation, and customer financing.
         </p>
       </article>
 
       <article class="revenue-card">
-        <div class="icon">📊</div>
-        <h3>Analytics</h3>
+        <div class="icon">📦</div>
+        <h3>Purchasing & Profitability</h3>
         <p>
-          Understand revenue, sales performance, close rates, lost deals,
-          operational activity, and where opportunities are getting stuck.
+          Purchase orders, material receiving, actual job costs, labor costing,
+          payment ledger data, and job-level margin visibility.
         </p>
       </article>
 
       <article class="revenue-card">
         <div class="icon">⚡</div>
-        <h3>Automations</h3>
+        <h3>Automations & Tasks</h3>
         <p>
-          Automate repetitive follow-up and operational actions so important
-          work keeps moving even when your team gets busy.
+          Automate repetitive follow-up and operational work with tasks,
+          reminders, recurring workflows, and background actions.
         </p>
       </article>
 
       <article class="revenue-card">
         <div class="icon">✦</div>
-        <h3>AI Intelligence</h3>
+        <h3>AI & Owner Action Center</h3>
         <p>
-          Surface at-risk opportunities, unanswered conversations, stalled
-          workflows, and important next actions before they become lost revenue.
+          AI Actions, AI Suggestions, Operations Feed, stale quote detection,
+          unread-message signals, overdue invoices, and job-gap detection.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">🔗</div>
+        <h3>Direct Integrations</h3>
+        <p>
+          Google Calendar, QuickBooks Online, customer financing, and contractor-owned
+          checkout through supported payment processors.
         </p>
       </article>
 
