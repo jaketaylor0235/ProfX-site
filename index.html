@@ -930,6 +930,152 @@
       color:#0f172a;
     }
 
+    .product-tour{
+      padding:88px 0;
+      background:linear-gradient(180deg,#eff6ff 0%,#f8fafc 100%);
+      border-top:1px solid #dbeafe;
+      border-bottom:1px solid #e2e8f0;
+    }
+
+    .tour-shell{
+      position:relative;
+      overflow:hidden;
+      display:grid;
+      grid-template-columns:1fr .92fr;
+      gap:42px;
+      align-items:center;
+      padding:46px;
+      border-radius:32px;
+      background:#020817;
+      color:white;
+      box-shadow:0 32px 85px rgba(2,8,23,.2);
+    }
+
+    .tour-shell:before{
+      content:"";
+      position:absolute;
+      width:420px;
+      height:420px;
+      right:-120px;
+      top:-180px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(37,99,235,.34),transparent 68%);
+      pointer-events:none;
+    }
+
+    .tour-copy,
+    .tour-preview{
+      position:relative;
+      z-index:1;
+    }
+
+    .tour-copy h2{
+      margin-top:10px;
+      max-width:650px;
+    }
+
+    .tour-copy p{
+      max-width:650px;
+      color:#cbd5e1;
+      font-size:16px;
+      line-height:1.75;
+    }
+
+    .tour-badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin:24px 0 0;
+    }
+
+    .tour-badge{
+      padding:8px 11px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      color:#dbeafe;
+      font-size:10px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+    }
+
+    .tour-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:28px;
+    }
+
+    .tour-preview{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      border-radius:25px;
+      padding:21px;
+      backdrop-filter:blur(14px);
+    }
+
+    .tour-preview-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:18px;
+    }
+
+    .tour-preview-head strong{
+      font-size:14px;
+    }
+
+    .tour-preview-head span{
+      color:#86efac;
+      font-size:9px;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .tour-flow{
+      display:grid;
+      gap:8px;
+    }
+
+    .tour-step{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(15,23,42,.72);
+      border-radius:14px;
+      padding:12px;
+    }
+
+    .tour-step-num{
+      width:28px;
+      height:28px;
+      flex:0 0 28px;
+      border-radius:9px;
+      display:grid;
+      place-items:center;
+      background:#2563eb;
+      color:white;
+      font-size:9px;
+      font-weight:900;
+    }
+
+    .tour-step strong{
+      display:block;
+      font-size:11px;
+    }
+
+    .tour-step span{
+      display:block;
+      margin-top:2px;
+      color:#94a3b8;
+      font-size:8px;
+      font-weight:700;
+    }
+
     .cta{
       padding:88px 0;
     }
@@ -1031,7 +1177,8 @@
       .nav-links{display:none}
       .hero-grid,
       .split,
-      .cta-box{grid-template-columns:1fr}
+      .cta-box,
+      .tour-shell{grid-template-columns:1fr}
       .revenue-grid{grid-template-columns:repeat(2,1fr)}
       .platform-grid{grid-template-columns:repeat(2,1fr)}
       .pricing-grid{
@@ -1097,6 +1244,8 @@
       .section{padding:58px 0}
       .section-head{margin-bottom:30px}
       .cta-box{padding:30px 20px}
+      .tour-shell{padding:30px 20px}
+      .product-tour{padding:58px 0}
       .site-price{text-align:left}
     }
 
@@ -1128,6 +1277,7 @@
       <a href="#revenue">CRM & Sales</a>
       <a href="#ai">AI & Automation</a>
       <a href="#operations">Operations</a>
+      <a href="#product-tour">Product Tour</a>
       <a href="#pricing">Pricing</a>
     </nav>
 
@@ -1170,9 +1320,14 @@
           href="https://calendly.com/jake-getprofx/30min"
           target="_blank"
           rel="noopener noreferrer"
-        >See ProfX in Action</a>
+        >Book a Demo</a>
 
-        <a class="btn btn-outline" href="#platform">Explore the Platform</a>
+        <a
+          class="btn btn-outline"
+          href="https://demo.getprofx.com/guided-demo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Take the Product Tour</a>
       </div>
 
       <p class="hero-note">
@@ -1788,6 +1943,87 @@
   </div>
 </section>
 
+<section class="product-tour" id="product-tour">
+  <div class="container">
+    <div class="tour-shell">
+
+      <div class="tour-copy">
+        <div class="kicker">Interactive Product Tour</div>
+        <h2>See the real ProfX workflow before you ever book a call.</h2>
+        <p>
+          Explore a live, populated ProfX demo and follow the contractor workflow from
+          lead and quote through scheduling, field work, purchasing, payments, and
+          profitability. The tour uses the real ProfX product — not screenshots or a mockup.
+        </p>
+
+        <div class="tour-badges">
+          <span class="tour-badge">No signup required</span>
+          <span class="tour-badge">Real ProfX workspace</span>
+          <span class="tour-badge">Guided & read-only</span>
+        </div>
+
+        <div class="tour-actions">
+          <a
+            class="btn btn-primary"
+            href="https://demo.getprofx.com/guided-demo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Start the Guided Tour</a>
+
+          <a
+            class="btn btn-outline"
+            href="https://calendly.com/jake-getprofx/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Book a Live Demo</a>
+        </div>
+      </div>
+
+      <div class="tour-preview">
+        <div class="tour-preview-head">
+          <strong>What you’ll see</strong>
+          <span>Live Product</span>
+        </div>
+
+        <div class="tour-flow">
+          <div class="tour-step">
+            <div class="tour-step-num">1</div>
+            <div>
+              <strong>Command Center → Pipeline</strong>
+              <span>See revenue, risks, follow-up, and opportunities.</span>
+            </div>
+          </div>
+
+          <div class="tour-step">
+            <div class="tour-step-num">2</div>
+            <div>
+              <strong>Estimate → Approval → Scheduling</strong>
+              <span>Follow sold work into production without the handoff gap.</span>
+            </div>
+          </div>
+
+          <div class="tour-step">
+            <div class="tour-step-num">3</div>
+            <div>
+              <strong>Dispatch → Field → Purchasing</strong>
+              <span>See crews, jobs, materials, and field operations stay connected.</span>
+            </div>
+          </div>
+
+          <div class="tour-step">
+            <div class="tour-step-num">4</div>
+            <div>
+              <strong>Completion → Payment → Profitability</strong>
+              <span>See actual job economics feed back into the business.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section class="section pricing" id="pricing">
   <div class="container">
 
@@ -2023,9 +2259,12 @@
             rel="noopener noreferrer"
           >Book a 30-Minute Demo</a>
 
-          <a class="btn btn-outline" href="mailto:info@getprofx.com">
-            Email ProfX
-          </a>
+          <a
+            class="btn btn-outline"
+            href="https://demo.getprofx.com/guided-demo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Take the Product Tour</a>
         </div>
       </div>
 
@@ -2077,6 +2316,11 @@
       <a href="#platform">Platform</a>
       <a href="/contractor-crm/">Contractor CRM</a>
       <a href="#pricing">Pricing</a>
+      <a
+        href="https://demo.getprofx.com/guided-demo"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Product Tour</a>
       <a
         href="https://calendly.com/jake-getprofx/30min"
         target="_blank"
