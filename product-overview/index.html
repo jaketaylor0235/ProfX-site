@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <title>ProfX Product Overview | Contractor CRM, Field Service & Operations</title>
+  <meta name="description" content="See how ProfX connects contractor CRM, estimating, scheduling, dispatch, field operations, purchasing, customer care, profitability and team training in one platform." />
+  <style>
+    :root{--navy:#020817;--navy2:#0b1324;--blue:#2563eb;--green:#059669;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--bg:#f5f7fb;--white:#fff;--max:1160px}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+    a{text-decoration:none;color:inherit}.container{width:min(var(--max),calc(100% - 36px));margin:0 auto}
+    .top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:11px}.brand img{height:44px;width:auto}.brand strong{font-size:19px}
+    .nav-links{display:flex;align-items:center;gap:18px;font-size:13px;font-weight:850;color:#475569}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:13px;font-size:13px;font-weight:900;border:1px solid transparent}.btn-dark{background:var(--navy);color:white}.btn-blue{background:var(--blue);color:white}.btn-light{background:white;border-color:var(--border);color:var(--text)}
+    .hero{padding:74px 0 58px;background:linear-gradient(180deg,#fff 0%,#eff6ff 100%);border-bottom:1px solid #dbeafe}.eyebrow{font-size:11px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#1d4ed8}
+    h1{font-size:clamp(44px,6vw,72px);line-height:.98;letter-spacing:-.055em;margin:15px 0 20px;max-width:980px}.lead{max-width:850px;color:#475569;font-size:18px;line-height:1.75}.actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
+    .proof{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}.proof div{background:white;border:1px solid #dbeafe;border-radius:17px;padding:16px}.proof strong{display:block;font-size:17px}.proof span{display:block;margin-top:4px;font-size:11px;font-weight:750;color:#64748b}
+    .section{padding:76px 0}.section.dark{background:var(--navy);color:white}.head{max-width:800px;margin-bottom:34px}.head.center{text-align:center;margin-left:auto;margin-right:auto}.kicker{font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:#2563eb}.dark .kicker{color:#60a5fa}
+    h2{font-size:clamp(32px,4vw,48px);line-height:1.04;letter-spacing:-.045em;margin:8px 0 13px}.head p{margin:0;color:var(--muted);font-size:16px;line-height:1.7}.dark .head p{color:#94a3b8}
+    .workflow{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}.stage{background:white;border:1px solid var(--border);border-radius:20px;padding:18px}.stage .num{width:28px;height:28px;border-radius:9px;background:#dbeafe;color:#1d4ed8;display:grid;place-items:center;font-size:10px;font-weight:900}.stage h3{font-size:14px;margin:13px 0 5px}.stage p{font-size:11px;color:#64748b;margin:0;line-height:1.6}
+    .roles{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.role{border:1px solid #1e293b;background:#0b1324;border-radius:20px;padding:20px}.role h3{font-size:15px;margin:0}.role p{color:#94a3b8;font-size:12px;line-height:1.65;margin:8px 0 0}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:white;border:1px solid var(--border);border-radius:22px;padding:22px;box-shadow:0 10px 30px rgba(15,23,42,.05)}.card .icon{width:42px;height:42px;border-radius:13px;background:#eff6ff;display:grid;place-items:center;font-size:18px}.card h3{font-size:17px;margin:15px 0 7px}.card p{font-size:13px;line-height:1.65;color:#64748b;margin:0}.card ul{padding-left:18px;margin:13px 0 0;color:#475569;font-size:12px;line-height:1.8}
+    .spotlight{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}.spot{border-radius:28px;padding:28px;background:white;border:1px solid var(--border)}.spot.darkbox{background:#0b1324;color:white;border-color:#1e293b}.spot h3{font-size:25px;letter-spacing:-.03em;margin:7px 0 10px}.spot p{color:#64748b;font-size:14px;line-height:1.7}.spot.darkbox p{color:#94a3b8}.mini{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:19px}.mini div{border-radius:14px;padding:13px;background:#f8fafc;border:1px solid #e2e8f0}.darkbox .mini div{background:#111b31;border-color:#1e293b}.mini strong{display:block;font-size:12px}.mini span{display:block;margin-top:3px;font-size:10px;color:#64748b}.darkbox .mini span{color:#94a3b8}
+    .safe{background:#fffbeb;border:1px solid #fde68a;border-radius:24px;padding:24px}.safe h3{margin:0;font-size:20px}.safe p{color:#92400e;font-size:13px;line-height:1.7;margin:9px 0 0}
+    .cta{padding:76px 0}.cta-box{border-radius:32px;background:var(--navy);color:white;padding:42px;display:flex;justify-content:space-between;gap:35px;align-items:center}.cta-box h2{margin-top:0}.cta-box p{color:#94a3b8;max-width:700px}
+    footer{background:white;border-top:1px solid var(--border);padding:30px 0}.foot{display:flex;justify-content:space-between;gap:20px;align-items:center;color:#64748b;font-size:12px}.foot img{height:38px}
+    @media(max-width:920px){.nav-links{display:none}.proof{grid-template-columns:repeat(2,1fr)}.workflow{grid-template-columns:repeat(3,1fr)}.roles{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}.spotlight{grid-template-columns:1fr}.cta-box{display:block}}
+    @media(max-width:600px){.hero{padding-top:52px}.proof,.workflow,.roles,.features{grid-template-columns:1fr}.cta-box{padding:28px 22px}.foot{flex-direction:column;align-items:flex-start}.container{width:min(var(--max),calc(100% - 24px))}}
+    @media print{.top,.actions,.cta,footer{display:none!important}body{background:#fff}.hero,.section{padding:28px 0}.card,.stage,.role,.spot{box-shadow:none;break-inside:avoid}.dark{background:#fff!important;color:#0f172a!important}.dark .head p,.role p,.darkbox p,.darkbox .mini span{color:#475569!important}.role,.spot.darkbox{background:#fff!important;color:#0f172a!important;border-color:#cbd5e1!important}.kicker,.dark .kicker{color:#1d4ed8!important}}
+  </style>
+</head>
+<body>
+<header class="top">
+  <div class="container nav">
+    <a class="brand" href="/"><img src="/logo.png" alt="ProfX" /><strong>ProfX</strong></a>
+    <div class="nav-links"><a href="#workflow">Workflow</a><a href="#platform">Platform</a><a href="#teams">Teams</a><a href="#customer">Customer Experience</a><a href="#academy">Academy</a></div>
+    <a class="btn btn-dark" href="https://calendly.com/jake-getprofx/30min" target="_blank" rel="noopener noreferrer">Book a Demo</a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">ProfX Product Overview</div>
+    <h1>One operating system from first lead to long-term customer.</h1>
+    <p class="lead">ProfX connects the revenue and operations workflows contractors normally spread across a CRM, estimating tool, scheduling calendar, dispatch board, technician app, purchasing process, payment system, customer portal, spreadsheets, and training documents.</p>
+    <div class="actions">
+      <a class="btn btn-blue" href="https://demo.getprofx.com/guided-demo" target="_blank" rel="noopener noreferrer">Explore the Live Product</a>
+      <a class="btn btn-dark" href="https://calendly.com/jake-getprofx/30min" target="_blank" rel="noopener noreferrer">Book a Live Demo</a>
+      <a class="btn btn-light" href="/">Back to getprofx.com</a>
+    </div>
+    <div class="proof">
+      <div><strong>Sales → Operations</strong><span>No disconnected handoff after the quote is approved.</span></div>
+      <div><strong>Office → Field</strong><span>The same job record follows the work into production.</span></div>
+      <div><strong>Job → Profit</strong><span>Actual labor, materials and payments feed operating insight.</span></div>
+      <div><strong>Launch → Training</strong><span>Onboarding and ProfX Academy stay connected to the product.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="workflow">
+  <div class="container">
+    <div class="head center"><div class="kicker">Connected Workflow</div><h2>The customer journey stays connected after every handoff.</h2><p>ProfX is organized around the real contractor workflow rather than a collection of unrelated feature pages.</p></div>
+    <div class="workflow">
+      <div class="stage"><div class="num">1</div><h3>Lead & Customer</h3><p>CRM records, canvassing, communication and ownership.</p></div>
+      <div class="stage"><div class="num">2</div><h3>Estimate & Quote</h3><p>Services, Price Book, smart estimating, approval and signature.</p></div>
+      <div class="stage"><div class="num">3</div><h3>Schedule & Prepare</h3><p>Calendar, dispatch, crew assignment and production readiness.</p></div>
+      <div class="stage"><div class="num">4</div><h3>Run the Job</h3><p>Tech Portal, time, photos, notes, materials, forms and requirements.</p></div>
+      <div class="stage"><div class="num">5</div><h3>Close & Collect</h3><p>Acceptance, invoice, payment, documents and warranty.</p></div>
+      <div class="stage"><div class="num">6</div><h3>Learn & Retain</h3><p>Profitability, review, referral, service follow-up and training.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="teams">
+  <div class="container">
+    <div class="head center"><div class="kicker">One Platform, Different Roles</div><h2>Every part of the company gets the view it needs.</h2><p>The underlying customer and job stay connected while each role gets a workflow suited to the work they actually perform.</p></div>
+    <div class="roles">
+      <div class="role"><h3>Owner</h3><p>Command Center, Owner Action Center, sales visibility, profitability, analytics, team training and operational exceptions.</p></div>
+      <div class="role"><h3>Office / Dispatch</h3><p>Customers, schedule, crews, production readiness, purchasing, communication, billing and customer follow-up.</p></div>
+      <div class="role"><h3>Sales</h3><p>CRM, field canvassing, pipeline, estimating, quotes, customer communication and follow-up.</p></div>
+      <div class="role"><h3>Technician / Crew</h3><p>Mobile Tech Portal with assigned jobs, directions, time, photos, notes, materials, requirements and closeout.</p></div>
+      <div class="role"><h3>Customer</h3><p>Branded project portal for proposals, schedule confirmation, status, photos, documents, billing, warranty and service requests.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="platform">
+  <div class="container">
+    <div class="head"><div class="kicker">Core Platform</div><h2>Built around the work that moves revenue.</h2><p>The goal is not to add another dashboard. The goal is to keep the information and next action connected across the customer lifecycle.</p></div>
+    <div class="features">
+      <article class="card"><div class="icon">👥</div><h3>CRM & Pipeline</h3><p>Customers, leads, opportunity value, activity, communication, follow-up and lost-deal visibility.</p><ul><li>Customer history</li><li>Pipeline stages</li><li>Owner Action Center</li><li>Canvassing conversion</li></ul></article>
+      <article class="card"><div class="icon">🧾</div><h3>Estimating & Quotes</h3><p>Services, Price Book, estimating structures, cost assumptions, target margin, approvals and signatures.</p><ul><li>Smart Pricing</li><li>Trade takeoffs</li><li>Customer approval links</li><li>Historical job learning</li></ul></article>
+      <article class="card"><div class="icon">📅</div><h3>Scheduling & Dispatch</h3><p>Calendar, appointments, crew assignment, capacity, recurring work and production readiness.</p><ul><li>Mobile agenda</li><li>Dispatch board</li><li>Schedule confirmation</li><li>Readiness blockers</li></ul></article>
+      <article class="card"><div class="icon">📱</div><h3>Field Operations</h3><p>Phone/iPad Tech Portal, travel/onsite clocks, directions, photos, forms, materials and customer closeout.</p><ul><li>On My Way → Start Work</li><li>Before / progress / after photos</li><li>Job requirements</li><li>Customer sign-off</li></ul></article>
+      <article class="card"><div class="icon">📦</div><h3>Purchasing & Job Cost</h3><p>Estimate-to-material workflow, suppliers, purchase orders, receiving and actual cost reconciliation.</p><ul><li>Required materials</li><li>Supplier selection</li><li>Delivery status</li><li>Actual material cost</li></ul></article>
+      <article class="card"><div class="icon">📈</div><h3>Profitability</h3><p>Completed revenue, actual labor/material/direct cost, gross profit, margin, WIP and receivables.</p><ul><li>No fake 100% margins</li><li>Estimated vs actual</li><li>Historical learning</li><li>Owner-level visibility</li></ul></article>
+      <article class="card"><div class="icon">💬</div><h3>Communication & Automation</h3><p>Two-way texting, quote cadences, appointment reminders, tasks, review requests and automation controls.</p><ul><li>Pause on reply</li><li>Scheduled follow-up</li><li>Human-review controls</li><li>Communication history</li></ul></article>
+      <article class="card"><div class="icon">💳</div><h3>Billing & Payments</h3><p>Invoices, deposits, balances, payment requests, reminders, payment ledger data and job-linked receipts.</p><ul><li>Final invoicing</li><li>Payment status</li><li>Balance visibility</li><li>Customer payment links</li></ul></article>
+      <article class="card"><div class="icon">🔗</div><h3>Connected Apps</h3><p>ProfX connects with supported external systems such as Google Calendar, QuickBooks Online and contractor-owned payment workflows.</p><ul><li>OAuth connection status</li><li>Integration health</li><li>Sync links</li><li>Error visibility</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="customer">
+  <div class="container spotlight">
+    <div class="spot">
+      <div class="kicker">Customer Portal 2.0</div>
+      <h3>Give the homeowner one project home.</h3>
+      <p>Instead of making a customer search through old texts and emails, the portal brings the things they need into one branded customer-facing experience.</p>
+      <div class="mini">
+        <div><strong>Action Center</strong><span>Quotes, schedule, balances, change orders and closeout.</span></div>
+        <div><strong>Project Progress</strong><span>Status, schedule and field photos.</span></div>
+        <div><strong>Payments & Warranty</strong><span>Invoices, payment links and coverage records.</span></div>
+        <div><strong>Help & Referrals</strong><span>Callback, service request, reviews and referrals.</span></div>
+      </div>
+    </div>
+    <div class="spot darkbox">
+      <div class="kicker">Post-Job Customer Care</div>
+      <h3>The CRM keeps working after production ends.</h3>
+      <p>Completion starts the retention workflow instead of ending the customer relationship.</p>
+      <div class="mini">
+        <div><strong>Acceptance</strong><span>Immutable completion signature evidence.</span></div>
+        <div><strong>Final Billing</strong><span>Invoice and remaining payment request.</span></div>
+        <div><strong>Review & Referral</strong><span>Follow-up while the project is still fresh.</span></div>
+        <div><strong>Future Service</strong><span>Warranty, maintenance and long-term follow-up.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="academy">
+  <div class="container spotlight">
+    <div class="spot darkbox">
+      <div class="kicker">ProfX Academy</div>
+      <h3>Onboarding is not the last time the team needs training.</h3>
+      <p>Academy stays inside ProfX for new hires, refreshers, role changes and retraining after major process or product changes.</p>
+      <div class="mini">
+        <div><strong>Role Tracks</strong><span>Owner, Dispatcher, Sales and Technician.</span></div>
+        <div><strong>Manager Assignments</strong><span>Modules, due dates and retraining rounds.</span></div>
+        <div><strong>Optional</strong><span>Employees can skip without losing ProfX access.</span></div>
+        <div><strong>History</strong><span>Completed, skipped, overdue and certified states remain visible.</span></div>
+      </div>
+    </div>
+    <div class="spot darkbox">
+      <div class="kicker">Trade-Specific Launch</div>
+      <h3>Start closer to the way the company actually works.</h3>
+      <p>Quick Start can prepare starter services, estimating structures, workflow requirements and an inactive sales cadence for the selected trade.</p>
+      <div class="mini">
+        <div><strong>Roofing / HVAC</strong><span>Trade-specific service and workflow structures.</span></div>
+        <div><strong>Plumbing / Electrical</strong><span>Install and service workflow starters.</span></div>
+        <div><strong>Remodeling / Painting</strong><span>Project production and cost structures.</span></div>
+        <div><strong>Safe Defaults</strong><span>No invented live costs, warranties or automatic customer messages.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="safe"><h3>ProfX is designed to automate workflow — not invent business promises.</h3><p>Trade starter templates do not guess local material prices, labor rates, permit requirements or warranty terms. Follow-up cadence starters are created inactive. Contractors review their own pricing, legal/customer commitments, communication settings and operational requirements before using them live.</p></div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="cta-box">
+      <div><div class="kicker">See the real product</div><h2>Follow ProfX from lead to profit.</h2><p>The interactive tour opens the live ProfX demo workspace. Or book a live demo to walk through the workflows that matter most to your company.</p></div>
+      <div class="actions"><a class="btn btn-blue" href="https://demo.getprofx.com/guided-demo" target="_blank" rel="noopener noreferrer">Take the Product Tour</a><a class="btn btn-light" href="https://calendly.com/jake-getprofx/30min" target="_blank" rel="noopener noreferrer">Book a Demo</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="container foot"><div class="brand"><img src="/logo.png" alt="ProfX" /><strong>ProfX</strong></div><div>© 2026 ProfX Technologies · Contractor Revenue & Operations Platform</div></div></footer>
+</body>
+</html>
