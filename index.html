@@ -32,6 +32,7 @@
       --purple:#7c3aed;
       --shadow:0 24px 70px rgba(15,23,42,.12);
       --max:1180px;
+      --nav-max:1540px;
     }
 
     *{box-sizing:border-box}
@@ -54,6 +55,11 @@
       margin:0 auto;
     }
 
+    .nav-container{
+      width:min(var(--nav-max),calc(100% - 36px));
+      margin:0 auto;
+    }
+
     .topbar{
       position:sticky;
       top:0;
@@ -64,21 +70,21 @@
     }
 
     .nav{
-      min-height:78px;
+      min-height:74px;
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:24px;
+      gap:18px;
     }
 
     .brand{
       display:flex;
+      flex:0 0 auto;
       align-items:center;
-      gap:12px;
     }
 
     .brand img{
-      height:46px;
+      height:54px;
       width:auto;
       border-radius:12px;
     }
@@ -101,25 +107,31 @@
 
     .nav-links{
       display:flex;
-      gap:28px;
+      flex:1 1 auto;
+      min-width:0;
+      align-items:center;
+      justify-content:center;
+      gap:17px;
       color:#475569;
-      font-size:14px;
-      font-weight:800;
+      font-size:13px;
+      font-weight:850;
+      white-space:nowrap;
     }
 
     .nav-links a:hover{color:#0f172a}
 
     .nav-actions{
       display:flex;
-      gap:10px;
+      flex:0 0 auto;
+      gap:9px;
     }
 
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      min-height:46px;
-      padding:0 20px;
+      min-height:44px;
+      padding:0 17px;
       border-radius:14px;
       font-size:14px;
       font-weight:900;
@@ -265,7 +277,7 @@
       overflow:hidden;
       background:#f8fafc;
       display:grid;
-      grid-template-columns:138px 1fr;
+      grid-template-columns:148px 1fr;
       min-height:585px;
     }
 
@@ -1173,6 +1185,13 @@
       flex-wrap:wrap;
     }
 
+    @media(max-width:1240px){
+      .nav{gap:13px}
+      .nav-links{gap:12px;font-size:12px}
+      .nav-actions .btn-outline{display:none}
+      .brand img{height:50px}
+    }
+
     @media(max-width:1020px){
       .nav-links{display:none}
       .hero-grid,
@@ -1362,29 +1381,22 @@
             <span>ProfX</span>
           </div>
 
-          <div class="side-label">Revenue</div>
-          <div class="side-item active">Revenue Overview</div>
-          <div class="side-item">Pipeline</div>
-          <div class="side-item">Quotes</div>
-          <div class="side-item">Text Cadences</div>
-
-          <div class="side-label">Intelligence</div>
-          <div class="side-item">AI Actions</div>
-          <div class="side-item">Analytics</div>
-
-          <div class="side-label">Operations</div>
-          <div class="side-item">Dispatch</div>
-          <div class="side-item">Calendar</div>
-          <div class="side-item">Jobs</div>
-          <div class="side-item">Crews</div>
+          <div class="side-label">Workspaces</div>
+          <div class="side-item active">Dashboard</div>
+          <div class="side-item">Sales</div>
+          <div class="side-item">Inbox</div>
+          <div class="side-item">Operations</div>
+          <div class="side-item">Automation</div>
+          <div class="side-item">Finance & Reports</div>
+          <div class="side-item">Company</div>
         </aside>
 
         <div class="app-content">
 
           <div class="mock-header">
             <div>
-              <p>Revenue command center</p>
-              <h3>Opportunities needing attention</h3>
+              <p>Dashboard workspace</p>
+              <h3>Your business, at a glance.</h3>
             </div>
             <div class="health">● Monitoring active</div>
           </div>
@@ -1531,22 +1543,31 @@
 
     <div class="section-head center">
       <div class="kicker">One Connected Platform</div>
-      <h2>Everything your company needs. Working together.</h2>
+      <h2>Seven workspaces. One contractor operating system.</h2>
       <p>
-        Stop piecing together separate systems for sales, customer communication,
-        field work, production, payments, and reporting. ProfX connects the customer
-        journey from first lead through the completed job and post-job service.
+        ProfX keeps a large platform easy to navigate by organizing the work around
+        Dashboard, Sales, Inbox, Operations, Automation, Finance & Reports, and Company —
+        while the same customer, quote, job, payment, and activity records stay connected underneath.
       </p>
     </div>
 
     <div class="revenue-grid platform-features">
 
       <article class="revenue-card">
-        <div class="icon">👥</div>
-        <h3>Complete CRM</h3>
+        <div class="icon">🧭</div>
+        <h3>Dashboard, Search & Exceptions</h3>
         <p>
-          Leads, customers, notes, activity, customer history, imports, search,
-          segments, and contact records in one place.
+          Start with the owner command center, global search, Quick Create, and exception views
+          that surface customer replies, production gaps, overdue work, and revenue risks.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">👥</div>
+        <h3>CRM, Tags & Segments</h3>
+        <p>
+          Leads, customers, notes, activity, imports, saved views, tags, segments,
+          customer history, and contact records stay in one connected CRM.
         </p>
       </article>
 
@@ -1561,10 +1582,10 @@
 
       <article class="revenue-card">
         <div class="icon">📈</div>
-        <h3>Pipeline & Revenue Recovery</h3>
+        <h3>Lead Response & Revenue Recovery</h3>
         <p>
-          Track opportunities, lead response, quote engagement, close rates,
-          lost deals, stalled revenue, and next sales actions.
+          Track first-response speed, pipeline movement, quote engagement, close rates,
+          stalled deals, aging opportunities, and revenue that still needs attention.
         </p>
       </article>
 
@@ -1572,26 +1593,26 @@
         <div class="icon">🧾</div>
         <h3>Estimating, Quotes & E-Sign</h3>
         <p>
-          Price book, rough and smart estimates, job-learning pricing insights,
+          Price Book, rough and smart estimates, job-learning pricing insights,
           customer approvals, signatures, and margin-aware estimating workflows.
         </p>
       </article>
 
       <article class="revenue-card">
         <div class="icon">💬</div>
-        <h3>Texting & Customer Follow-Up</h3>
+        <h3>Inbox, Texting & Follow-Up</h3>
         <p>
-          Two-way texting, automated SMS cadences, appointment reminders,
-          customer replies, and review-request workflows.
+          Two-way texting, unread-reply visibility, automated SMS cadences,
+          appointment reminders, AI-assisted replies, and review-request workflows.
         </p>
       </article>
 
       <article class="revenue-card">
         <div class="icon">📅</div>
-        <h3>Scheduling & Calendar</h3>
+        <h3>Scheduling, Memberships & Recurring</h3>
         <p>
-          Appointments, scheduling requests, recurring work, quote visits,
-          availability, and Google Calendar sync.
+          Appointments, scheduling requests, quote visits, recurring service plans,
+          memberships, availability, job reminders, and Google Calendar sync.
         </p>
       </article>
 
@@ -1599,8 +1620,8 @@
         <div class="icon">🚚</div>
         <h3>Dispatch, Crews & Capacity</h3>
         <p>
-          Assign employees and crews, coordinate dispatch, monitor capacity,
-          track time, and keep office and field teams aligned.
+          Assign employees and crews, coordinate dispatch, forecast available capacity,
+          catch readiness blockers, and keep office and field teams aligned.
         </p>
       </article>
 
@@ -1608,17 +1629,62 @@
         <div class="icon">🛠️</div>
         <h3>Jobs & Field Operations</h3>
         <p>
-          Mobile job details, customer information, directions, notes, photos,
-          requirements, statuses, completion steps, and technician tools.
+          Mobile job details, directions, customer information, notes, photos,
+          requirements, statuses, completion steps, and technician workflows.
         </p>
       </article>
 
       <article class="revenue-card">
-        <div class="icon">✍️</div>
-        <h3>Change Orders, Forms & Documents</h3>
+        <div class="icon">⏱️</div>
+        <h3>Time, Change Orders & Documents</h3>
         <p>
-          Change orders, signed PDFs, project documents, fillable PDF workflows,
-          custom forms, submissions, and customer-facing documents.
+          Job-linked time tracking, change orders, customer signatures, fillable forms,
+          project documents, submissions, and signed records stay with the work.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">📦</div>
+        <h3>Purchasing & Job Costing</h3>
+        <p>
+          Convert estimate materials into purchase orders, track suppliers and deliveries,
+          reconcile actual material and labor cost, and improve future estimates.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">💳</div>
+        <h3>Invoices & Payments</h3>
+        <p>
+          Deposits, invoices, partial payments, payment requests, reminders, payment history,
+          balances, and contractor-owned supported checkout stay tied to the customer and job.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">📊</div>
+        <h3>Finance & Reports</h3>
+        <p>
+          Profitability, analytics, marketing ROI, commissions, WIP, receivables,
+          estimated-versus-actual cost, and job-level margin visibility live together.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">⚙️</div>
+        <h3>Workflow Builder & Automation</h3>
+        <p>
+          Build trigger-condition-action workflows alongside cadences, scheduled automations,
+          reminders, tasks, recurring processes, and run history.
+        </p>
+      </article>
+
+      <article class="revenue-card">
+        <div class="icon">✦</div>
+        <h3>AI & Owner Action Center</h3>
+        <p>
+          AI-assisted actions, reply review, Operations Feed signals, stale quote detection,
+          unread-message signals, overdue invoices, and job-gap detection.
         </p>
       </article>
 
@@ -1632,38 +1698,11 @@
       </article>
 
       <article class="revenue-card">
-        <div class="icon">💳</div>
-        <h3>Invoices, Payments & Customer Care</h3>
+        <div class="icon">🛡️</div>
+        <h3>Security, Team & Training</h3>
         <p>
-          Invoices, partial payments, deposit links, reminders, payment history,
-          post-job review requests, warranty follow-up, referrals, and long-term customer care.
-        </p>
-      </article>
-
-      <article class="revenue-card">
-        <div class="icon">📦</div>
-        <h3>Purchasing & Profitability</h3>
-        <p>
-          Purchase orders, material receiving, actual job costs, labor costing,
-          payment ledger data, and job-level margin visibility.
-        </p>
-      </article>
-
-      <article class="revenue-card">
-        <div class="icon">⚡</div>
-        <h3>Automations & Tasks</h3>
-        <p>
-          Automate repetitive follow-up and operational work with tasks,
-          reminders, recurring workflows, and background actions.
-        </p>
-      </article>
-
-      <article class="revenue-card">
-        <div class="icon">✦</div>
-        <h3>AI & Owner Action Center</h3>
-        <p>
-          AI Actions, AI Suggestions, Operations Feed, stale quote detection,
-          unread-message signals, overdue invoices, and job-gap detection.
+          Company settings, employees, role access, MFA controls, onboarding,
+          ProfX Academy, retraining, services, and account records stay in the Company workspace.
         </p>
       </article>
 
@@ -1671,8 +1710,8 @@
         <div class="icon">🔗</div>
         <h3>Direct Integrations</h3>
         <p>
-          Google Calendar, QuickBooks Online, and contractor-owned checkout through
-          supported payment processors, with room for additional provider integrations as ProfX expands.
+          Google Calendar, Gmail, QuickBooks Online, and supported payment processors connect
+          with ProfX so contractors can reduce duplicate entry without giving up their existing tools.
         </p>
       </article>
 
@@ -2018,16 +2057,18 @@
 
       <div class="tour-copy">
         <div class="kicker">Interactive Product Tour</div>
-        <h2>See the real ProfX workflow before you ever book a call.</h2>
+        <h2>Walk the current ProfX platform from first lead to real job profit.</h2>
         <p>
-          Explore a live, populated ProfX demo and follow the contractor workflow from
-          lead and quote through scheduling, field work, purchasing, payments,
-          profitability, and team training. The tour uses the real ProfX product — not screenshots or a mockup.
+          Explore the live ProfX demo through the same workspace structure a contractor uses:
+          Dashboard, Sales, Inbox, Operations, Automation, Finance & Reports, and Company.
+          The route now includes lead response, revenue recovery, segments, capacity, change orders,
+          time tracking, workflow automation, invoicing, payments, profitability, integrations, security, and training.
         </p>
 
         <div class="tour-badges">
           <span class="tour-badge">No signup required</span>
           <span class="tour-badge">Real ProfX workspace</span>
+          <span class="tour-badge">Current product layout</span>
           <span class="tour-badge">Guided & read-only</span>
         </div>
 
@@ -2058,32 +2099,48 @@
           <div class="tour-step">
             <div class="tour-step-num">1</div>
             <div>
-              <strong>Command Center → Pipeline</strong>
-              <span>See revenue, risks, follow-up, and opportunities.</span>
+              <strong>Dashboard → Exceptions</strong>
+              <span>Start with revenue, today’s work, alerts, search, and owner priorities.</span>
             </div>
           </div>
 
           <div class="tour-step">
             <div class="tour-step-num">2</div>
             <div>
-              <strong>Estimate → Approval → Scheduling</strong>
-              <span>Follow sold work into production without the handoff gap.</span>
+              <strong>Sales → Lead Response → Revenue Recovery</strong>
+              <span>Follow opportunities from first contact through quote, approval, and recovery.</span>
             </div>
           </div>
 
           <div class="tour-step">
             <div class="tour-step-num">3</div>
             <div>
-              <strong>Dispatch → Field → Purchasing</strong>
-              <span>See crews, jobs, materials, and field operations stay connected.</span>
+              <strong>Inbox → Customer Follow-Up</strong>
+              <span>See conversations, unread replies, cadences, and customer communication stay connected.</span>
             </div>
           </div>
 
           <div class="tour-step">
             <div class="tour-step-num">4</div>
             <div>
-              <strong>Completion → Customer Care → Profitability</strong>
-              <span>See payment, post-job follow-up, and actual job economics stay connected.</span>
+              <strong>Operations → Capacity → Field</strong>
+              <span>Move sold work through scheduling, dispatch, jobs, purchasing, time, and change orders.</span>
+            </div>
+          </div>
+
+          <div class="tour-step">
+            <div class="tour-step-num">5</div>
+            <div>
+              <strong>Automation → Finance & Reports</strong>
+              <span>Build workflows, invoice the job, collect payment, and review actual profitability.</span>
+            </div>
+          </div>
+
+          <div class="tour-step">
+            <div class="tour-step-num">6</div>
+            <div>
+              <strong>Company → Integrations → Training</strong>
+              <span>Finish with connected apps, security, team setup, onboarding, and ProfX Academy.</span>
             </div>
           </div>
         </div>
