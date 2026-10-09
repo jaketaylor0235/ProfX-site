@@ -158,6 +158,31 @@
       border-color:var(--border);
     }
 
+    .customer-login{
+      color:#1d4ed8;
+      border-color:#bfdbfe;
+      background:#eff6ff;
+    }
+
+    .customer-login:hover{
+      background:#dbeafe;
+      border-color:#93c5fd;
+    }
+
+    .existing-customer{
+      margin-top:14px;
+      color:#475569;
+      font-size:13px;
+      font-weight:750;
+    }
+
+    .existing-customer a{
+      color:#1d4ed8;
+      font-weight:900;
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+
     .hero{
       padding:76px 0 60px;
       overflow:hidden;
@@ -1188,8 +1213,8 @@
     @media(max-width:1240px){
       .nav{gap:13px}
       .nav-links{gap:12px;font-size:12px}
-      .nav-actions .btn-outline{display:none}
       .brand img{height:50px}
+      .nav-actions .btn{padding:0 14px;font-size:13px}
     }
 
     @media(max-width:1020px){
@@ -1213,7 +1238,10 @@
     @media(max-width:650px){
       .container{width:calc(100% - 24px)}
       .brand span{display:none}
-      .nav-actions .btn-outline{display:none}
+      .nav{gap:8px}
+      .nav-actions{gap:6px}
+      .nav-actions .btn{min-height:40px;padding:0 11px;font-size:12px;border-radius:12px}
+      .brand img{height:44px}
       h1{font-size:48px}
       .hero-copy{font-size:16px}
       .results,
@@ -1297,7 +1325,10 @@
     </nav>
 
     <div class="nav-actions">
-      <a class="btn btn-outline" href="/quote-revenue-calculator/">Revenue Calculator</a>
+      <a
+        class="btn btn-outline customer-login"
+        href="https://app.getprofx.com/login"
+      >Customer Login</a>
       <a
         class="btn btn-dark"
         href="https://calendly.com/jake-getprofx/30min"
@@ -1349,6 +1380,11 @@
           rel="noopener noreferrer"
         >Take the Product Tour</a>
       </div>
+
+      <p class="existing-customer">
+        Already a ProfX customer?
+        <a href="https://app.getprofx.com/login">Log in to your workspace →</a>
+      </p>
 
       <p class="hero-note">
         Roofing • HVAC • Plumbing • Electrical • Solar • Landscaping • General Contractors
